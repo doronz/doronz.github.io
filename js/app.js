@@ -6,9 +6,13 @@ function checkTime(i) {
 }
 
 function get12Hour(i) {
-    return i % 12;   
+    if (i == 0 || i == 12){
+        return 12;
+    }
+    else {
+        return i % 12;   
+    }
 }
-
 function startTime() {
     var today = new Date();
     var h = today.getHours();
