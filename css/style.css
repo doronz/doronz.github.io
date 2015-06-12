@@ -1,4 +1,14 @@
 body {
+    min-height: 100%;
     background-image: url("https://i.imgur.com/LWvNs9w.jpg");
     background-repeat: no-repeat;
+}
+
+#time {
+    font-size: 100px;
+    border: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color:azure;
 }
