@@ -17,8 +17,7 @@ function startTime() {
     // add a zero in front of numbers<10
     h = get12Hour(h);
     m = checkTime(m);
-    s = checkTime(s);
-    document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+    document.getElementById('time').innerHTML = h + ":" + m;
     t = setTimeout(function () {
         startTime()
     }, 500);
