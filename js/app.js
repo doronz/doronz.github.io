@@ -31,8 +31,8 @@ startTime();
 function loadTemp() {
     var apiKey = 'b075f45fbfc81a2a9cdfd9741db90c90';
     var url = 'https://api.forecast.io/forecast/';
-    var longi = 38.5539;
-    var lati = 121.7381;
+    var lati = 38.5539;
+    var longi = 121.7381;
     var data;
     
     $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
