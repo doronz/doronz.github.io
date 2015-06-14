@@ -36,7 +36,7 @@ function loadTemp() {
     var data;
     
     $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
-        $('#weather').html(Math.round(data.currently.temperature)) + '&deg;';
+        $('#weather').html(Math.round(data.currently.temperature)) + "\u00B0";
     });
     }
 loadTemp();
