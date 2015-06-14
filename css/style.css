@@ -15,3 +15,14 @@ body {
     padding: 24px;
     text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
 }
+
+#weather {
+    font-size: 100px;
+    border: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: azure;
+    padding: 24px;
+    text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+}
