@@ -24,7 +24,7 @@ function startTime() {
     document.getElementById('time').innerHTML = h + ":" + m;
     t = setTimeout(function () {
         startTime()
-    }, 500);
+    }, 1000);
     console.log("checking time");
     if (s == 0) {
         loadNewWallpaper();
