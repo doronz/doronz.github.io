@@ -26,7 +26,7 @@ function startTime() {
         startTime()
     }, 1000);
     console.log("checking time");
-    if (s == 0) {
+    if (m == 0 && s == 0) {
         loadNewWallpaper();
     }
 }
