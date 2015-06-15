@@ -53,7 +53,7 @@ var wallpaper = ["http://i.imgur.com/DuMqW96.jpg", "http://i.imgur.com/V0n6d41.j
 function loadNewWallpaper() {
     console.log("Loading wallpaper");
     var random = Math.floor(Math.random() * wallpaper.length);
-    var chosen = url(wallpaper[random]);
+    var chosen = wallpaper[random];
     console.log("Set to: " + chosen);
-    $('body').css('background-image', chosen);
+    $('body').css('background-image', url(chosen));
 }
