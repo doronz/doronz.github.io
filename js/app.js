@@ -28,6 +28,7 @@ function startTime() {
     console.log("checking time");
     if (m == 0 && s == 0) {
         loadNewWallpaper();
+        loadTemp();
     }
 }
 startTime();
@@ -43,7 +44,6 @@ function loadTemp() {
         $('#weather').html(Math.round(data.currently.temperature)) + "\u00B0";
     });
     }
-loadTemp();
 
 var wallpaper = ["http://i.imgur.com/DuMqW96.jpg", "http://i.imgur.com/V0n6d41.jpg", "http://i.imgur.com/6dfIT0V.jpg",
                  "http://i.imgur.com/PMgfJSm.jpg", "http://i.imgur.com/X7O4wF8.jpg", "http://i.imgur.com/54deiOy.jpg", 
@@ -59,3 +59,7 @@ function loadNewWallpaper() {
         $(this).css('background-image', 'url(' + chosen + ')');
     }).delay(1000).fadeTo('slow', 1);
 }
+
+/* On Startup */
+loadNewWallpaper();
+loadTemp();
