@@ -55,5 +55,5 @@ function loadNewWallpaper() {
     var random = Math.floor(Math.random() * wallpaper.length);
     var chosen = wallpaper[random];
     console.log("Set to: " + chosen);
-    $('body').css('background-image', url(chosen));
+    $('body').css('background-image', 'url(chosen))';
 }
