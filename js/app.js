@@ -25,7 +25,8 @@ function startTime() {
     t = setTimeout(function () {
         startTime()
     }, 500);
-    if (m % 5 == 0) {
+    console.log("checking time");
+    if (s == 0) {
         loadNewWallpaper();
     }
 }
@@ -50,6 +51,7 @@ var wallpaper = ["http://i.imgur.com/DuMqW96.jpg", "http://i.imgur.com/V0n6d41.j
                  "http://i.imgur.com/Lvh407h.jpg", "http://i.imgur.com/RY55VZr.jpg", "http://i.imgur.com/6dfIT0V.jpg"];
 
 function loadNewWallpaper() {
+    console.log("Loading wallpaper");
     var random = Math.floor(Math.random() * wallpaper.length);
     $("body").css("url(wallpaper[random])");
 }
