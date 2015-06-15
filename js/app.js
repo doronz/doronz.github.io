@@ -55,7 +55,7 @@ function loadNewWallpaper() {
     var random = Math.floor(Math.random() * wallpaper.length);
     var chosen = wallpaper[random];
     console.log("Set to: " + chosen);
-    $('body').fadeTo('slow', 0.3, function() {
+    $('body').fadeTo('slow', 1, function() {
         $(this).css('background-image', 'url(' + chosen + ')');
     }).delay(1000).fadeTo('slow', 1);
 }
