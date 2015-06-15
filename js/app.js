@@ -25,6 +25,9 @@ function startTime() {
     t = setTimeout(function () {
         startTime()
     }, 500);
+    if (m % 5 == 0) {
+        loadNewWallpaper();
+    }
 }
 startTime();
 
@@ -40,3 +43,13 @@ function loadTemp() {
     });
     }
 loadTemp();
+
+var wallpaper = ["http://i.imgur.com/DuMqW96.jpg", "http://i.imgur.com/V0n6d41.jpg", "http://i.imgur.com/6dfIT0V.jpg",
+                 "http://i.imgur.com/PMgfJSm.jpg", "http://i.imgur.com/X7O4wF8.jpg", "http://i.imgur.com/54deiOy.jpg", 
+                 "http://i.imgur.com/Wj6acBM.jpg", "http://i.imgur.com/vR8w3xT.jpg", "http://i.imgur.com/fLR1tGM.jpg", 
+                 "http://i.imgur.com/Lvh407h.jpg", "http://i.imgur.com/RY55VZr.jpg", "http://i.imgur.com/6dfIT0V.jpg"];
+
+function loadNewWallpaper() {
+    var random = Math.floor(Math.random() * wallpaper.length);
+    $("body").css("url(wallpaper[random])");
+}
