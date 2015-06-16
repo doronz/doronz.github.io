@@ -75,9 +75,14 @@ function loadWallpaper() {
   } while (chosen == random);
   chosen = random;
   wallpaper.setAttribute('src', wallpapers[chosen]);
+
   wallpaperContainer.appendChild(wallpaper);
   wallpaper.style.visibility = 'hidden';
   wallpaper.onload = function () {
+      if (wallpaper.width < window.innerWidth) {
+     loadWallpaper();
+      return;
+  }
     console.info("Image loaded !");
     hideLoading();
     wallpaper.style.visibility = 'visible';
