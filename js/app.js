@@ -74,7 +74,9 @@ function firstLoadWallpaper() {
   img.onload = function () {
      console.info("Image loaded !");
      //do something...
+    hideLoading();
     img.style.visibility = 'visible';
+    Materialize.fadeInImage('#wallpaper');
   }
   console.log("set to " + wallpapers[3]);
   }
@@ -103,7 +105,7 @@ function hideLoading() {
 }
 
 $(document).ready(function() {
-  hideLoading();
+  //hideLoading();
 });
 
 /* On Startup */
