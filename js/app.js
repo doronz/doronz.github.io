@@ -26,8 +26,9 @@ function startTime() {
         startTime()
     }, 1000);
     console.log("checking time");
-    if (m == 0 && s == 0) { // load new wallpaper every hour
-        loadNewWallpaper();
+    if (s % 10 == 0) { // load new wallpaper 10 seconds
+    //if (m == 0 && s == 0) { // load new wallpaper every hour
+        loadWallpaper();
         loadTemp();
     }
 }
@@ -57,44 +58,35 @@ function prepareWallpaperLinks() {
           wallpapers.push(item.data.url);
       });
       if (wallpapers.length > 10) {
-        firstLoadWallpaper(); 
+        loadWallpaper(); 
       }
   });
   console.log(wallpapers.length);
 }
 
-
-function firstLoadWallpaper() {
-  var wallpaper = document.getElementById('wallpaper');
-  var newWallpaper = new Image();
-  newWallpaper.setAttribute('src', wallpapers[3]);
-  wallpaper.appendChild(newWallpaper);
-  var img = wallpaper.firstChild;
-  img.style.visibility = 'hidden';
-  img.onload = function () {
-     console.info("Image loaded !");
-     //do something...
-    hideLoading();
-    img.style.visibility = 'visible';
-    Materialize.fadeInImage('#wallpaper');
-  }
-  console.log("set to " + wallpapers[3]);
-  }
-
 var chosen;
-function loadNewWallpaper() {
-  var wallpaper = document.getElementById('wallpaper');
-  var newWallpaper = new Image();
+function loadWallpaper() {
+  var wallpaperContainer = document.getElementById('wallpaper');
+  var wallpaper = new Image();
   var random;
   do {
     random = Math.floor(Math.random() * wallpapers.length);
   } while (chosen == random);
   chosen = random;
-  newWallpaper.setAttribute('src', wallpapers[chosen]);
-  wallpaper.appendChild(newWallpaper);
-  Materialize.fadeInImage('#wallpaper');
-  wallpaper.removeChild(wallpaper.childNodes[0]);
+  wallpaper.setAttribute('src', wallpapers[chosen]);
+  showLoading();
+  wallpaperContainer.appendChild(wallpaper);
+  wallpaper.style.visibility = 'hidden';
+  wallpaper.onload = function () {
+    console.info("Image loaded !");
+    hideLoading();
+    wallpaper.style.visibility = 'visible';
+    Materialize.fadeInImage('#wallpaper');
+    //wallpaperContainer.removeChild(wallpaperContainer.childNodes[0]);
+  }
+  console.log("set to " + wallpapers[chosen]);
 }
+
 
 function showLoading() {
   $('#loader').load('loader.html'); 
