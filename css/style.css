@@ -1,8 +1,19 @@
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+#wallpaper img {
+    position: fixed;
+    height: 100vh;
+    src: url("http://i.imgur.com/PMgfJSm.jpg");
+}
+
 body {
-    min-height: 100%;
-    background-image: url("http://i.imgur.com/PMgfJSm.jpg");
-    background-repeat: no-repeat;
-    background-size : 100% auto
+
 }
 
 #time {

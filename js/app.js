@@ -26,7 +26,7 @@ function startTime() {
         startTime()
     }, 1000);
     console.log("checking time");
-    if (m == 0 && s == 0) {
+    if (s % 5 == 0) {
         loadNewWallpaper();
         loadTemp();
     }
@@ -45,21 +45,50 @@ function loadTemp() {
     });
     }
 
-var wallpaper = ["http://i.imgur.com/DuMqW96.jpg", "http://i.imgur.com/V0n6d41.jpg", "http://i.imgur.com/6dfIT0V.jpg",
-                 "http://i.imgur.com/PMgfJSm.jpg", "http://i.imgur.com/X7O4wF8.jpg", "http://i.imgur.com/54deiOy.jpg", 
+var wallpapers = ["http://i.imgur.com/DuMqW96.jpg", "http://i.imgur.com/V0n6d41.jpg",
+                 "http://i.imgur.com/PMgfJSm.jpg", "http://i.imgur.com/54deiOy.jpg", 
                  "http://i.imgur.com/Wj6acBM.jpg", "http://i.imgur.com/vR8w3xT.jpg", "http://i.imgur.com/fLR1tGM.jpg", 
-                 "http://i.imgur.com/Lvh407h.jpg", "http://i.imgur.com/RY55VZr.jpg", "http://i.imgur.com/6dfIT0V.jpg"];
+                 "http://i.imgur.com/Lvh407h.jpg", "http://i.imgur.com/RY55VZr.jpg"];
+
+
+function firstLoadWallpaper() {
+  var wallpaper = document.getElementById('wallpaper');
+  var newWallpaper = new Image();
+  newWallpaper.setAttribute('src', wallpapers[0]);
+  wallpaper.appendChild(newWallpaper);
+  }
+
+var chosen;
 
 function loadNewWallpaper() {
-    console.log("Loading wallpaper");
-    var random = Math.floor(Math.random() * wallpaper.length);
-    var chosen = wallpaper[random];
-    console.log("Set to: " + chosen);
-    $('body').fadeTo('slow', 1, function() {
-        $(this).css('background-image', 'url(' + chosen + ')');
-    }).delay(1000).fadeTo('slow', 1);
+  var wallpaper = document.getElementById('wallpaper');
+  var newWallpaper = new Image();
+  var random;
+  do {
+    random = Math.floor(Math.random() * wallpapers.length);
+    console.log(chosen + " - " + random);
+  } while (chosen == random);
+  chosen = random;
+  newWallpaper.setAttribute('src', wallpapers[chosen]);
+  wallpaper.appendChild(newWallpaper);
+  Materialize.fadeInImage('#wallpaper');
+  wallpaper.removeChild(wallpaper.childNodes[0]);
 }
 
+function showLoading() {
+  $('#loader').load('loader.html'); 
+}
+
+function hideLoading() {
+   $('#loader').hide();
+}
+
+$(document).ready(function() {
+  hideLoading();
+});
+
 /* On Startup */
+showLoading();
+firstLoadWallpaper();
 loadNewWallpaper();
 loadTemp();
