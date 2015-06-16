@@ -26,12 +26,12 @@ function startTime() {
         startTime()
     }, 1000);
     console.log("checking time");
-    if (s % 5 == 0) {
+    if (m == 0 && s == 0) { // load new wallpaper every hour
         loadNewWallpaper();
         loadTemp();
     }
 }
-startTime();
+
 
 function loadTemp() {
     var apiKey = 'b075f45fbfc81a2a9cdfd9741db90c90';
@@ -45,28 +45,47 @@ function loadTemp() {
     });
     }
 
-var wallpapers = ["http://i.imgur.com/DuMqW96.jpg", "http://i.imgur.com/V0n6d41.jpg",
+/*var wallpapers = ["http://i.imgur.com/DuMqW96.jpg", "http://i.imgur.com/V0n6d41.jpg",
                  "http://i.imgur.com/PMgfJSm.jpg", "http://i.imgur.com/54deiOy.jpg", 
                  "http://i.imgur.com/Wj6acBM.jpg", "http://i.imgur.com/vR8w3xT.jpg", "http://i.imgur.com/fLR1tGM.jpg", 
-                 "http://i.imgur.com/Lvh407h.jpg", "http://i.imgur.com/RY55VZr.jpg"];
+                 "http://i.imgur.com/Lvh407h.jpg", "http://i.imgur.com/RY55VZr.jpg"];*/
+
+var wallpapers = [];
+function prepareWallpaperLinks() {
+  $.getJSON("https://www.reddit.com/r/EarthPorn+pics+wallpaper+wallpapers+spaceporn/search.json?q=1920%201080&sort=top&restrict_sr=on&t=week", function(data) {
+      $.each(data.data.children, function(i, item ){
+          wallpapers.push(item.data.url);
+      });
+      if (wallpapers.length > 10) {
+        firstLoadWallpaper(); 
+      }
+  });
+  console.log(wallpapers.length);
+}
 
 
 function firstLoadWallpaper() {
   var wallpaper = document.getElementById('wallpaper');
   var newWallpaper = new Image();
-  newWallpaper.setAttribute('src', wallpapers[0]);
+  newWallpaper.setAttribute('src', wallpapers[3]);
   wallpaper.appendChild(newWallpaper);
+  var img = wallpaper.firstChild;
+  img.style.visibility = 'hidden';
+  img.onload = function () {
+     console.info("Image loaded !");
+     //do something...
+    img.style.visibility = 'visible';
+  }
+  console.log("set to " + wallpapers[3]);
   }
 
 var chosen;
-
 function loadNewWallpaper() {
   var wallpaper = document.getElementById('wallpaper');
   var newWallpaper = new Image();
   var random;
   do {
     random = Math.floor(Math.random() * wallpapers.length);
-    console.log(chosen + " - " + random);
   } while (chosen == random);
   chosen = random;
   newWallpaper.setAttribute('src', wallpapers[chosen]);
@@ -89,6 +108,6 @@ $(document).ready(function() {
 
 /* On Startup */
 showLoading();
-firstLoadWallpaper();
-loadNewWallpaper();
+prepareWallpaperLinks();
 loadTemp();
+startTime();
