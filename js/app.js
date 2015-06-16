@@ -26,9 +26,9 @@ function startTime() {
         startTime()
     }, 1000);
     console.log("checking time");
-    if (s % 10 == 0) { // load new wallpaper 10 seconds
-    //if (m == 0 && s == 0) { // load new wallpaper every hour
-        loadWallpaper();
+    //if (s % 10 == 0) { // load new wallpaper 10 seconds
+    if (m == 0 && s == 0) { // load new wallpaper every hour
+        prepareWallpaperLinks();
         loadTemp();
     }
 }
