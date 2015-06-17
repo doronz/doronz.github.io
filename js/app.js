@@ -146,7 +146,8 @@ function loadChromecast() {
     window.messageBus.onMessage = function(event) {
       console.log('Message [' + event.senderId + ']: ' + event.data);
       // display the message from the sender
-      displayText(event.data); 
+      document.body.style.backgroundColor('red');
+      //displayText(event.data); 
     }
 
     // initialize the CastReceiverManager
