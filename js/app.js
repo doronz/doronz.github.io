@@ -44,7 +44,7 @@ function loadTemp() {
     var data;
     
     $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
-        $('#weather').html(Math.round(data.currently.temperature)) + "\u00B0";
+        $('#weather').html(Math.round(data.currently.temperature) + "\u00B0");
     });
     }
 
@@ -125,8 +125,15 @@ $(document).ready(function() {
   //hideLoading();
 });
 
+
+function setFooter() {
+  var timeHeight = document.getElementById('time').getAttribute('height');
+  document.getElementById('footer').setAttribute('height', timeHeight);
+}
+
 /* On Startup */
 showLoading();
 getLinks();
 loadTemp();
 startTime();
+setFooter();

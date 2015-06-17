@@ -10,10 +10,18 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     </head>
     <body>
-      <div id="loader" class="centered"></div>
-      <div id="wallpaper"></div>
-      <div id="time"></div>
-      <div id="weather"></div>
+      <div id="wrapper">
+          <div id="header">
+            <div id="loader" class="centered"></div>
+          </div>
+          <div id="content">
+            <div id="wallpaper"></div>
+          </div>
+          <div id="footer">
+            <div id="time"></div>
+            <div id="weather"></div>
+          </div>
+      </div>
       <script>
         var appConfig = new cast.receiver.CastReceiverManager.Config();
         // 100 minutes for testing, use default 10sec in prod by not setting this value
