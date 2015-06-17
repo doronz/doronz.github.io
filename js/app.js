@@ -1,3 +1,6 @@
+var castReceiverManager, messageBus;
+
+
 function checkTime(i) {
     if (i < 10) {
         i = "0" + i;
@@ -134,14 +137,23 @@ function setFooter() {
 function loadChromecast() {
   window.onload = function() {
     cast.receiver.logger.setLevelValue(0);
-    window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
-  
-  
-    // create a CastMessageBus to handle messages for a custom namespace
-    window.messageBus =
-      window.castReceiverManager.getCastMessageBus(
-      'urn:x-cast:com.doronzehavi.casttest');
+    castReceiverManager = global.cast.receiver.CastReceiverManager.getInstance();
+    
+    
+    castReceiverManager.onReady = function() {
+      castReceiverManager.setApplicationState("Application status is ready.");
+    };
 
+    // create a CastMessageBus to handle messages for a custom namespace
+    messageBus =
+      castReceiverManager.getCastMessageBus(
+      'urn:x-cast:com.doronzehavi.casttest');
+    
+    castReceiverManager.onSenderDisconnected = function() {
+      if (castReceiverManager.getSenders().length === 0) {
+        global.close();
+      }
+    };
 
     window.messageBus.onMessage = function(event) {
       console.log('Message [' + event.senderId + ']: ' + event.data);
