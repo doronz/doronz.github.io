@@ -50,7 +50,7 @@ function loadTemp() {
 
 var wallpapers = [];
 var _getRedditData = function(callback) {
-  var random = Math.floor(Math.random() * 150);
+  var random = Math.floor(Math.random() * 15);
   var api = "https://www.reddit.com/r/EarthPorn+pics+wallpaper+wallpapers+spaceporn/search.json?q=1920%201080&sort=top&restrict_sr=on&t=week&chosen=" + random;
   
   // this starts running
