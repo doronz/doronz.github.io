@@ -1,16 +1,30 @@
-<!-- Setting up chromecast receiver -->
-var appConfig = new cast.receiver.CastReceiverManager.Config();
-// 100 minutes for testing, use default 10sec in prod by not setting this value
-appConfig.maxInactivity = 6000;
-window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
-window.castReceiverManager.start(appConfig);
+window.onload = function() {
+  cast.receiver.logger.setLevelValue(0);
+  window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
+  
+  
+  // create a CastMessageBus to handle messages for a custom namespace
+  window.messageBus =
+    window.castReceiverManager.getCastMessageBus(
+    'urn:x-cast:com.doronzehavi.casttest');
+  
+  
+  window.messageBus.onMessage = function(event) {
+    console.log('Message [' + event.senderId + ']: ' + event.data);
+    // display the message from the sender
+    displayText(event.data); 
+  }
+  
+  
+  // initialize the CastReceiverManager
+  var appConfig = new cast.receiver.CastReceiverManager.Config();
+  appConfig.maxInactivity = 6000;
+  window.castReceiverManager.start(appConfig);
+  console.log('Receiver Manager started');
+};
 
-var customMessageBus = castReceiverManager.getCastMessageBus('urn:x-cast:com.doronzehavi.casttest');
-customMessageBus.onMessage = function(event) {
+function displayText(text) {
  // Messages received here from client
-  var header = document.createElement('H1');
-  var text = document.createTextNode(event.data);
-  header.appendChild(text);
- document.getElementById('content').appendChild(header);
+  document.getElementById("header").innerHTML = text;
   
 }
