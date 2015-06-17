@@ -42,10 +42,14 @@ function loadTemp() {
     var data;
     
     $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
-        $('#weather').html(Math.round(data.currently.temperature) + '\u00B0');
+        $('#weather').html(Math.round(data.currently.temperature)) + "\u00B0";
     });
     }
 
+/*var wallpapers = ["http://i.imgur.com/DuMqW96.jpg", "http://i.imgur.com/V0n6d41.jpg",
+                 "http://i.imgur.com/PMgfJSm.jpg", "http://i.imgur.com/54deiOy.jpg", 
+                 "http://i.imgur.com/Wj6acBM.jpg", "http://i.imgur.com/vR8w3xT.jpg", "http://i.imgur.com/fLR1tGM.jpg", 
+                 "http://i.imgur.com/Lvh407h.jpg", "http://i.imgur.com/RY55VZr.jpg"];*/
 
 var wallpapers = [];
 function prepareWallpaperLinks() {
@@ -70,29 +74,37 @@ function loadWallpaper() {
     random = Math.floor(Math.random() * wallpapers.length);
   } while (chosen == random);
   chosen = random;
-  wallpaper.setAttribute('src', wallpapers[chosen]); 
+  wallpaper.setAttribute('src', wallpapers[chosen]);
+
+  wallpaperContainer.appendChild(wallpaper);
+  wallpaper.style.visibility = 'hidden';
   wallpaper.onload = function () {
-    if (wallpaper.width < window.innerWidth) {
-      loadWallpaper();
+      if (wallpaper.width < window.innerWidth) {
+     loadWallpaper();
       return;
-    }
-    hideLoading();
-    wallpaperContainer.appendChild(wallpaper);
-    Materialize.fadeInImage('wallpaper');
   }
-  
+    console.info("Image loaded !");
+    hideLoading();
+    wallpaper.style.visibility = 'visible';
+    Materialize.fadeInImage('#wallpaper');
+  }
   wallpaper.onerror = wallpaper.onabort = function () {
     console.info("Error loading image!");
     loadWallpaper();
     return;
   }
-  
   console.log("set to " + wallpapers[chosen]);
 }
 
 function isImage(url) {
     return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
 }
+
+var getLocation = function(href) {
+    var l = document.createElement("a");
+    l.href = href;
+    return l;
+};
 
 function showLoading() {
   $('#loader').load('loader.html'); 
