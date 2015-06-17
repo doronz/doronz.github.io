@@ -158,7 +158,7 @@ function loadChromecast() {
 
   function displayText(text) {
    // Messages received here from client
-    document.getElementById("header").innerHTML = text;
+    document.getElementById("message").innerHTML = text;
 
   }
 
