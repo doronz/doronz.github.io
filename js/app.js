@@ -46,24 +46,26 @@ function loadTemp() {
     });
     }
 
-/*var wallpapers = ["http://i.imgur.com/DuMqW96.jpg", "http://i.imgur.com/V0n6d41.jpg",
-                 "http://i.imgur.com/PMgfJSm.jpg", "http://i.imgur.com/54deiOy.jpg", 
-                 "http://i.imgur.com/Wj6acBM.jpg", "http://i.imgur.com/vR8w3xT.jpg", "http://i.imgur.com/fLR1tGM.jpg", 
-                 "http://i.imgur.com/Lvh407h.jpg", "http://i.imgur.com/RY55VZr.jpg"];*/
-
 var wallpapers = [];
-function prepareWallpaperLinks() {
-  var random = Math.random() * 50;
-  $.getJSON("https://www.reddit.com/r/EarthPorn+pics+wallpaper+wallpapers+spaceporn/search.json?q=1920+1080&sort=top&restrict_sr=on&t=month&count=" + random, function(data) {
-      $.each(data.data.children, function(i, item ){
-          wallpapers.push(item.data.url);
-      });
-      if (wallpapers.length > 10) {
-        loadWallpaper(); 
-      }
-  });
-  console.log(wallpapers.length);
-}
+var _getRedditData = function(callback) {
+    var api = "https://www.reddit.com/r/EarthPorn+pics+wallpaper+wallpapers+spaceporn/search.json?q=1920%201080&sort=top&restrict_sr=on&t=week";
+  
+  // this starts running
+  $.getJSON(api, function(data) {
+         $.each(data.data.children, function(i, item) {
+             wallpapers.push(item.data.url);
+         });
+         callback(wallpapers);
+    });   
+};
+
+var getLinks = function() {
+    _getRedditData(function(wallpapers) {
+      console.log("Loading wallpaper.");  
+      loadWallpaper();
+      console.log(wallpapers.length);
+    });
+};
 
 var chosen;
 function loadWallpaper() {
@@ -120,6 +122,6 @@ $(document).ready(function() {
 
 /* On Startup */
 showLoading();
-prepareWallpaperLinks();
+getLinks();
 loadTemp();
 startTime();

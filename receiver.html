@@ -18,7 +18,6 @@
         var appConfig = new cast.receiver.CastReceiverManager.Config();
         // 100 minutes for testing, use default 10sec in prod by not setting this value
         appConfig.maxInactivity = 6000;
-        window.mediaManager = new cast.receiver.MediaManager(window.mediaElement);
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
         window.castReceiverManager.start(appConfig);
       </script>
