@@ -2,6 +2,7 @@
   <html>
     <head>
     	<title>CastAwake v0.02</title>
+        <script src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
       <link type="text/css" rel="stylesheet" href="css/style.css"/>
@@ -13,6 +14,14 @@
       <div id="wallpaper"></div>
       <div id="time"></div>
       <div id="weather"></div>
+      <script>
+        var appConfig = new cast.receiver.CastReceiverManager.Config();
+        // 100 minutes for testing, use default 10sec in prod by not setting this value
+        appConfig.maxInactivity = 6000;
+        window.mediaManager = new cast.receiver.MediaManager(window.mediaElement);
+        window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
+        window.castReceiverManager.start(appConfig);
+      </script>
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
