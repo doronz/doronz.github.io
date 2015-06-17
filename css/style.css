@@ -40,3 +40,7 @@ body {
 #weather:after {
     content: "\00b0";
 }
+
+#loader {
+  z-index: 100;
+}

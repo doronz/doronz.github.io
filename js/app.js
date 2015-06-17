@@ -26,9 +26,11 @@ function startTime() {
         startTime()
     }, 1000);
     console.log("checking time");
-    //if (s % 10 == 0) { // load new wallpaper 10 seconds
-    if (m == 0 && s == 0) { // load new wallpaper every hour
-        prepareWallpaperLinks();
+    if (s % 15 == 0) { // load new wallpaper 15 seconds
+    //if (m == 0 && s == 0) { // load new wallpaper every hour
+        if (loaded) {
+          loadWallpaper();
+        }
         loadTemp();
     }
 }
@@ -48,7 +50,8 @@ function loadTemp() {
 
 var wallpapers = [];
 var _getRedditData = function(callback) {
-    var api = "https://www.reddit.com/r/EarthPorn+pics+wallpaper+wallpapers+spaceporn/search.json?q=1920%201080&sort=top&restrict_sr=on&t=week";
+  var random = Math.floor(Math.random() * 150);
+  var api = "https://www.reddit.com/r/EarthPorn+pics+wallpaper+wallpapers+spaceporn/search.json?q=1920%201080&sort=top&restrict_sr=on&t=week&chosen=" + random;
   
   // this starts running
   $.getJSON(api, function(data) {
@@ -59,8 +62,10 @@ var _getRedditData = function(callback) {
     });   
 };
 
+var loaded = false;
 var getLinks = function() {
     _getRedditData(function(wallpapers) {
+      loaded = true;
       console.log("Loading wallpaper.");  
       loadWallpaper();
       console.log(wallpapers.length);
@@ -77,15 +82,15 @@ function loadWallpaper() {
   } while (chosen == random);
   chosen = random;
   wallpaper.setAttribute('src', wallpapers[chosen]);
-
+  showLoading();
   wallpaperContainer.appendChild(wallpaper);
   wallpaper.style.visibility = 'hidden';
   wallpaper.onload = function () {
-      if (wallpaper.width < window.innerWidth) {
-     loadWallpaper();
-      return;
-  }
     console.info("Image loaded !");
+    if (wallpaper.width < window.innerWidth || wallpaper.height < window.innerHeight) {
+      loadWallpaper();
+      return;
+    }
     hideLoading();
     wallpaper.style.visibility = 'visible';
     Materialize.fadeInImage('#wallpaper');
