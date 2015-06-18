@@ -149,11 +149,13 @@ function loadChromecast() {
       displayText(event.data);
 
       if (!isPlaying) {
+        console.log("Not playing yet, so start play.");
         var audio = new Audio('good_morning.mp3');
         audio.play();
         isPlaying = true;
       }
       else {
+        console.log("Playing or played, so pause");
         audio.pause();
         isPlaying = false;
       }
