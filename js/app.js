@@ -145,8 +145,7 @@ function loadChromecast() {
     var isPlaying = false;
     window.messageBus.onMessage = function(event) {
       console.log('Message [' + event.senderId + ']: ' + event.data);
-      // display the message from the sender
-      displayText(event.data);
+
 
       if (!isPlaying) {
         console.log("Not playing yet, so start play.");
