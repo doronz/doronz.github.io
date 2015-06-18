@@ -147,16 +147,8 @@ function loadChromecast() {
       console.log('Message [' + event.senderId + ']: ' + event.data);
 
       var audio = new Audio('good_morning.mp3');
-      if (!isPlaying) {
-        console.log("Not playing yet, so start play.");
-        audio.play();
-        isPlaying = true;
-      }
-      else {
-        console.log("Playing or played, so pause");
-        audio.pause();
-        isPlaying = false;
-      }
+      audio.play();
+      setTimeout(function() { audio.pause(); }, 5000);
     }
 
     // initialize the CastReceiverManager
