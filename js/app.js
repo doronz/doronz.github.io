@@ -146,10 +146,10 @@ function loadChromecast() {
     window.messageBus.onMessage = function(event) {
       console.log('Message [' + event.senderId + ']: ' + event.data);
 
-
+      var audio;
       if (!isPlaying) {
         console.log("Not playing yet, so start play.");
-        var audio = new Audio('good_morning.mp3');
+        audio = new Audio('good_morning.mp3');
         audio.play();
         isPlaying = true;
       }
