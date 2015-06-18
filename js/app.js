@@ -147,9 +147,11 @@ function loadChromecast() {
       console.log('Message [' + event.senderId + ']: ' + event.data);
       if (isPlaying){
         audio.pause();
+        isPlaying = false;
       }
       else {
         audio.play();
+        isPlaying = true;
       }
     }
 
