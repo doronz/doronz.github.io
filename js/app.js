@@ -147,10 +147,12 @@ function loadChromecast() {
       console.log('Message [' + event.senderId + ']: ' + event.data);
       if (isPlaying){
         audio.pause();
+        window.messageBus.send(event.senderId, 'snooze');
         isPlaying = false;
       }
       else {
         audio.play();
+        window.messageBus.send(event.senderId, 'alarm');
         isPlaying = true;
       }
     }
