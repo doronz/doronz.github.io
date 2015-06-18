@@ -146,7 +146,9 @@ function loadChromecast() {
     window.messageBus.onMessage = function(event) {
       console.log('Message [' + event.senderId + ']: ' + event.data);
       // display the message from the sender
-      displayText(event.data); 
+      displayText(event.data);
+      var audio = new Audio('good_morning.mp3');
+      audio.play();
     }
 
     // initialize the CastReceiverManager
