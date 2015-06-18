@@ -26,7 +26,7 @@ function startTime() {
         startTime()
     }, 1000);
     console.log("checking time");
-    if (s % 15 == 0) { // load new wallpaper 15 seconds
+    if (s == 0) { // load new wallpaper 60 seconds
     //if (m == 0 && s == 0) { // load new wallpaper every hour
         if (loaded) {
           loadWallpaper();
@@ -142,13 +142,21 @@ function loadChromecast() {
       window.castReceiverManager.getCastMessageBus(
       'urn:x-cast:com.doronzehavi.casttest');
 
-
+    var isPlaying = false;
     window.messageBus.onMessage = function(event) {
       console.log('Message [' + event.senderId + ']: ' + event.data);
       // display the message from the sender
       displayText(event.data);
-      var audio = new Audio('good_morning.mp3');
-      audio.play();
+
+      if (!isPlaying) {
+        var audio = new Audio('good_morning.mp3');
+        audio.play();
+        isPlaying = true;
+      }
+      else {
+        audio.pause();
+        isPlaying = false;
+      }
     }
 
     // initialize the CastReceiverManager
@@ -158,11 +166,11 @@ function loadChromecast() {
     console.log('Receiver Manager started');
   };
 
-  function displayText(text) {
+/*  function displayText(text) {
    // Messages received here from client
     document.getElementById("message").innerHTML = text;
 
-  }
+  }*/
 
 }
 
