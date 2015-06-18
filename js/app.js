@@ -142,13 +142,15 @@ function loadChromecast() {
       window.castReceiverManager.getCastMessageBus(
       'urn:x-cast:com.doronzehavi.casttest');
 
-    var isPlaying = false;
+
     window.messageBus.onMessage = function(event) {
       console.log('Message [' + event.senderId + ']: ' + event.data);
-
-      var audio = new Audio('good_morning.mp3');
-      audio.play();
-      setTimeout(function() { audio.pause(); }, 5000);
+      if (isPlaying){
+        audio.pause();
+      }
+      else {
+        audio.play();
+      }
     }
 
     // initialize the CastReceiverManager
@@ -165,6 +167,11 @@ function loadChromecast() {
   }*/
 
 }
+
+/** Alarm Sounds **/
+var audio = new Audio('good_morning.mp3');
+var isPlaying = false;
+
 
 
 /* On Startup */
