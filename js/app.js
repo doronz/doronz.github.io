@@ -26,15 +26,17 @@ function startTime() {
         startTime()
     }, 1000);
     console.log("checking time");
-    if (s == 0) { // load new wallpaper 60 seconds
+    if (m == 0) { // load new wallpaper 60 seconds
     //if (m == 0 && s == 0) { // load new wallpaper every hour
         if (loaded) {
           loadWallpaper();
         }
-        loadWeather();
     }
 }
 
+$( document ).ready(function() {
+    setTimeout(loadWeather(), 5000);
+});
 
 function loadWeather() {
   var apiKey = 'b075f45fbfc81a2a9cdfd9741db90c90';
@@ -44,13 +46,22 @@ function loadWeather() {
   var data;
 
   $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
-      $('#weather').html(Math.round(data.currently.temperature) + "\u00B0" + "\n" + "Sunrise: " + data.daily.sunriseTime + "\tSunset: " + data.daily.sunsetTime);
-  });
-  
-  $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
-      $('#weather').html(Math.round(data.currently.temperature) + "\u00B0");
+      $('#temp-min').html(Math.round(data.daily.data[0].temperatureMin) + "\u00B0"); 
+      $('#temp-max').html(Math.round(data.daily.data[0].temperatureMax) + "\u00B0");
+    
+/*      var sunsetTimeVal = data.daily.data[0].sunsetTime;
+      var sunsetTime = new Date(sunsetTimeVal);
+      var time = (sunsetTime.getTime() - sunsetTime.getMilliseconds())/1000 ;
+    console.log(time);
+      $('#sunset').html(time.getHours() + ":" + time.getMinutes()); */
+      $('#sunset').html(data.hourly.summary);
+      $('#sunset').setAttribute('visibility', 'visible');
+      $('#sunset').slideUp(1000);
+      //console.log(JSON.stringify(data, null, '  '));
   });
 }
+
+
 
 var wallpapers = [];
 var _getRedditData = function(callback) {
@@ -186,6 +197,5 @@ var isPlaying = false;
 showLoading();
 loadChromecast();
 getLinks();
-loadWeather();
 startTime();
 setFooter();

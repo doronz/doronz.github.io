@@ -41,20 +41,37 @@
     bottom: 0;
     color:azure;
     padding: 0px 24px 0px 24px;
-    text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
 }
 
 #weather {
-    z-index: 4;
-    font-size: 100px;
-    border: none;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    color: azure;
-    padding: 0px 24px 0px 24px;
-    text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+  position: fixed;
+  text-align: center;
+  width: 25%;
+  z-index: 4;
+  font-size: 50px;
+  border: none;
+  left: 0;
+  bottom: 0;
+  /*color: azure;*/
+  margin: 24px;
+
 }
+
+
+.custom-shadow {
+  text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+}
+
+#temp-max {
+  display: inline;
+  color: #151515;
+}
+
+#temp-min {
+  display: inline;
+  color: #bdbdbd;
+}
+
 
 
 #loader {
