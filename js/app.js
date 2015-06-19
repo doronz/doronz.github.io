@@ -56,22 +56,23 @@ function loadWeather(lat, long) {
       $('#summary').html(data.hourly.summary);
       $('#weather').fadeIn(2500);
       loadWeatherIcons(data.daily.data[0].icon);
-  });
-  var geoAPI = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lati + ',' + longi +'&key=AIzaSyCp8gYYsbSTYhKB8G2oGU2xbID_PxdNSOw';
-    $.getJSON(geoAPI, function(data) {
-      console.log(geoAPI);
-      //console.log(JSON.stringify(data.results[0].address_components));
-      //$('location').html(data.results.address_components[4].long_name);
-      var city, state;
-      for (var i = 0; i < data.results[0].address_components.length; i++){
-        if (data.results[0].address_components[i].types[0].indexOf("locality") !=-1){
-          city = data.results[0].address_components[i].long_name;
+      /* getting location name */
+      var geoAPI = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lati + ',' + longi +'&key=AIzaSyCp8gYYsbSTYhKB8G2oGU2xbID_PxdNSOw';
+      $.getJSON(geoAPI, function(data) {
+        console.log(geoAPI);
+        //console.log(JSON.stringify(data.results[0].address_components));
+        //$('location').html(data.results.address_components[4].long_name);
+        var city, state;
+        for (var i = 0; i < data.results[0].address_components.length; i++){
+          if (data.results[0].address_components[i].types[0].indexOf("locality") !=-1){
+            city = data.results[0].address_components[i].long_name;
+          }
+          if (data.results[0].address_components[i].types[0].indexOf("administrative_area_level") !=-1){
+            state = data.results[0].address_components[i].long_name;
+          }
         }
-        if (data.results[0].address_components[i].types[0].indexOf("administrative_area_level") !=-1){
-          state = data.results[0].address_components[i].long_name;
-        }
-      }
-      $('#location').html(city + ', ' + state);
+        $('#location').html(city + ', ' + state);
+      });
     });
 }
 
