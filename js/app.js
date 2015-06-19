@@ -65,7 +65,7 @@ function loadWeather(lat, long) {
       hideProgress();
       $('#temp-min').html(Math.round(data.daily.data[0].temperatureMin) + "\u00B0"); 
       $('#temp-max').html(Math.round(data.daily.data[0].temperatureMax) + "\u00B0");
-      $('#sunset').html(data.hourly.summary);
+      $('#summary').html(data.hourly.summary);
       $('#weather').fadeIn(2500);
   });
 }
@@ -111,7 +111,7 @@ function loadWallpaper() {
     console.info("Image loaded !");
     hideLoading();
     wallpaper.style.visibility = 'visible';
-    //Materialize.fadeInImage('#wallpaper');
+    Materialize.fadeInImage('#wallpaper');
   }
   wallpaper.onerror = wallpaper.onabort = function () {
     console.info("Error loading image!");
