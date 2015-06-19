@@ -42,7 +42,7 @@ function getLocation(){
     $.getJSON(api), function(data) {
       console.log("received json");
       console.log(data.results.address_components[4].long_name);
-      $('location').html(data.results.address_components[4].long_name);
+      //$('location').html(data.results.address_components[4].long_name);
       
     }
   });
@@ -111,7 +111,7 @@ function loadWallpaper() {
     console.info("Image loaded !");
     hideLoading();
     wallpaper.style.visibility = 'visible';
-    Materialize.fadeInImage('#wallpaper');
+    //Materialize.fadeInImage('#wallpaper');
   }
   wallpaper.onerror = wallpaper.onabort = function () {
     console.info("Error loading image!");
