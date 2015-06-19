@@ -157,9 +157,10 @@ function loadChromecast() {
       console.log('Message [' + event.senderId + ']: ' + event.data);
       if (isPlaying){
         var message = event.data;
-        message.split(':');
+        message.split(':');vb  
         var lati = message[0];
         var long = message[1];
+        console.log("Location received: " + lati + long);
         loadWeather(lati, long);
         audio.pause();
         window.messageBus.send(event.senderId, 'snooze');
