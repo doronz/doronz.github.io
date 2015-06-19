@@ -46,7 +46,6 @@ function loadWeather(lat, long) {
   var url = 'https://api.forecast.io/forecast/';
   var lati = lat;
   var longi = long;
-  console.log("Lat/Long: " + lat + " - " + long);
   var data;
   $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
       //console.log(JSON.stringify(data, null, '  '));
@@ -155,10 +154,12 @@ function loadChromecast() {
 
     window.messageBus.onMessage = function(event) {
       console.log('Message [' + event.senderId + ']: ' + event.data);
+      console.log(parseFloat(message.split(':')));
       var message = event.data;
       message.split(':');
-      var lati = message[0];
-      var long = message[1];
+      var lati = parseFloat(message[0]);
+      var long = parseFloat(message[1]);
+      console.log("Lat/Long: " + lati + " - " + long);
       loadWeather(lati, long);
       if (isPlaying){
         audio.pause();
