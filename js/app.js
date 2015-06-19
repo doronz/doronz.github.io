@@ -156,7 +156,7 @@ function loadChromecast() {
     window.messageBus.onMessage = function(event) {
       console.log('Message [' + event.senderId + ']: ' + event.data);
       var message = event.data;
-      message.split(':');vb  
+      message.split(':');
       var lati = message[0];
       var long = message[1];
       loadWeather(lati, long);
