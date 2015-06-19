@@ -1,7 +1,7 @@
   <!DOCTYPE html>
   <html>
     <head>
-    	<title>CastAwake v0.02</title>
+    	<title>CastAwake v0.1</title>
         <script src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
@@ -24,9 +24,10 @@
               <div id="weather-progress" class="progress hidden">
                 <div class="indeterminate"></div>
               </div>
-              <div id="temp-min" class='col s6' ></div>
-              <div id="temp-max" class='col s6'></div>
-              <h5 id="sunset"></h5>
+              <div id="temp-min" class='col s6 opaque' ></div>
+              <div id="temp-max" class='col s6 opaque'></div>
+              <h5 id="sunset" class='opaque'></h5>
+              <h6 id="location" class='opaque'></h6>
             </div>
           </div>
       </div>

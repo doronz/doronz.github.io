@@ -44,7 +44,7 @@
 }
 
 #weather {
-  opacity: 0.7;
+  opacity: 0.8;
   position: fixed;
   text-align: center;
   width: 25%;
@@ -53,7 +53,6 @@
   border: none;
   left: 0;
   bottom: 0;
-  /*color: azure;*/
   margin: 24px;
 
 }

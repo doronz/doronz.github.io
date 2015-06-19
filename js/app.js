@@ -38,8 +38,21 @@ function getLocation(){
   showProgress($('#weather-progress'));
   navigator.geolocation.getCurrentPosition(function(position) {
     loadWeather(position.coords.latitude, position.coords.longitude);
+    var api = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + ',' + position.coords.longitude +'&key=AIzaSyCp8gYYsbSTYhKB8G2oGU2xbID_PxdNSOw';
+    $.getJSON(api), function(data) {
+      console.log("received json");
+      console.log(data.results.address_components[4].long_name);
+      $('location').html(data.results.address_components[4].long_name);
+      
+    }
   });
 }
+
+/*if (address_component.types[0] == "locality") {
+                                                        console.log("City: "
+                                                                        + address_component.address_components[0].long_name);
+                                                        itemLocality = address_component.address_components[0].long_name;
+                                                    }*/
 
 function loadWeather(lat, long) {
   var apiKey = 'b075f45fbfc81a2a9cdfd9741db90c90';
@@ -56,8 +69,6 @@ function loadWeather(lat, long) {
       $('#weather').fadeIn(2500);
   });
 }
-
-
 
 var wallpapers = [];
 var _getRedditData = function(callback) {
@@ -90,12 +101,12 @@ function loadWallpaper() {
   var random;
   do {
     random = Math.floor(Math.random() * wallpapers.length);
-  } while (chosen == random);
+  } while (chosen == random || !isImage(wallpapers[random]));
   chosen = random;
   wallpaper.setAttribute('src', wallpapers[chosen]);
   showLoading();
-  wallpaperContainer.appendChild(wallpaper);
   wallpaper.style.visibility = 'hidden';
+  wallpaperContainer.appendChild(wallpaper);
   wallpaper.onload = function () {
     console.info("Image loaded !");
     hideLoading();
