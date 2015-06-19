@@ -26,8 +26,8 @@ function startTime() {
         startTime()
     }, 1000);
     console.log("time: " + h + ":" + m);
-    if (s % 5 == 0) { // load new wallpaper 60 seconds
-    //if (m == 0 && s == 0) { // load new wallpaper every hour
+    //if (s % 5 == 0) { // load new wallpaper 5 seconds
+    if (m == 0 && s == 0) { // load new wallpaper every hour
         if (loaded) {
           loadWallpaper();
         }
