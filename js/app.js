@@ -38,10 +38,25 @@ function getLocation(){
   showProgress($('#weather-progress'));
   navigator.geolocation.getCurrentPosition(function(position) {
     loadWeather(position.coords.latitude, position.coords.longitude);
-    var api = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + ',' + position.coords.longitude +'&key=AIzaSyCp8gYYsbSTYhKB8G2oGU2xbID_PxdNSOw';
-    $.getJSON(api, function(data) {
-      console.log(api);
-      //console.log(JSON.stringify(data.results[0].address_components));
+    });
+}
+
+function loadWeather(lati, long) {
+  var apiKey = 'b075f45fbfc81a2a9cdfd9741db90c90';
+  var url = 'https://api.forecast.io/forecast/';
+  var data;
+  $.getJSON(url + apiKey + "/" + lati + "," + long + "?callback=?", function(data) {
+      //console.log(JSON.stringify(data, null, '  '));
+      hideProgress();
+      $('#temp-min').html(Math.round(data.daily.data[0].temperatureMin) + "\u00B0"); 
+      $('#temp-max').html(Math.round(data.daily.data[0].temperatureMax) + "\u00B0");
+      $('#summary').html(data.hourly.summary);
+      $('#weather').fadeIn(2500);
+  });
+  var geoAPI = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lati + ',' + long +'&key=AIzaSyCp8gYYsbSTYhKB8G2oGU2xbID_PxdNSOw';
+    $.getJSON(geoAPI, function(data) {
+      //console.log(geoAPI);
+      console.log(JSON.stringify(data.results[0].address_components));
       //$('location').html(data.results.address_components[4].long_name);
       var city, state;
       for (var i = 0; i < data.results[0].address_components.length; i++){
@@ -54,29 +69,6 @@ function getLocation(){
       }
       $('#location').html(city + ', ' + state);
     });
-  });
-}
-
-/*if (address_component.types[0] == "locality") {
-                                                        console.log("City: "
-                                                                        + address_component.address_components[0].long_name);
-                                                        itemLocality = address_component.address_components[0].long_name;
-                                                    }*/
-
-function loadWeather(lat, long) {
-  var apiKey = 'b075f45fbfc81a2a9cdfd9741db90c90';
-  var url = 'https://api.forecast.io/forecast/';
-  var lati = lat;
-  var longi = long;
-  var data;
-  $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
-      //console.log(JSON.stringify(data, null, '  '));
-      hideProgress();
-      $('#temp-min').html(Math.round(data.daily.data[0].temperatureMin) + "\u00B0"); 
-      $('#temp-max').html(Math.round(data.daily.data[0].temperatureMax) + "\u00B0");
-      $('#summary').html(data.hourly.summary);
-      $('#weather').fadeIn(2500);
-  });
 }
 
 var wallpapers = [];
