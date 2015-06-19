@@ -25,7 +25,7 @@ function startTime() {
     t = setTimeout(function () {
         startTime()
     }, 1000);
-    console.log("checking time");
+    console.log("time: " + h + ":" + m);
     if (m == 0) { // load new wallpaper 60 seconds
     //if (m == 0 && s == 0) { // load new wallpaper every hour
         if (loaded) {
@@ -34,30 +34,27 @@ function startTime() {
     }
 }
 
-$( document ).ready(function() {
-    setTimeout(loadWeather(), 5000);
-});
+function getLocation(){
+  showProgress($('#weather-progress'));
+  navigator.geolocation.getCurrentPosition(function(position) {
+    loadWeather(position.coords.latitude, position.coords.longitude);
+  });
+}
 
-function loadWeather() {
+function loadWeather(lat, long) {
   var apiKey = 'b075f45fbfc81a2a9cdfd9741db90c90';
   var url = 'https://api.forecast.io/forecast/';
-  var lati = 37.6625;
-  var longi = -121.8747;
+  var lati = lat;
+  var longi = long;
+  console.log("Lat/Long: " + lat + " - " + long);
   var data;
-
   $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
+      //console.log(JSON.stringify(data, null, '  '));
+      hideProgress($('#weather-progress'));
       $('#temp-min').html(Math.round(data.daily.data[0].temperatureMin) + "\u00B0"); 
       $('#temp-max').html(Math.round(data.daily.data[0].temperatureMax) + "\u00B0");
-    
-/*      var sunsetTimeVal = data.daily.data[0].sunsetTime;
-      var sunsetTime = new Date(sunsetTimeVal);
-      var time = (sunsetTime.getTime() - sunsetTime.getMilliseconds())/1000 ;
-    console.log(time);
-      $('#sunset').html(time.getHours() + ":" + time.getMinutes()); */
       $('#sunset').html(data.hourly.summary);
-      $('#sunset').setAttribute('visibility', 'visible');
-      $('#sunset').slideUp(1000);
-      //console.log(JSON.stringify(data, null, '  '));
+      $('#weather').fadeIn(2500);
   });
 }
 
@@ -102,10 +99,6 @@ function loadWallpaper() {
   wallpaper.style.visibility = 'hidden';
   wallpaper.onload = function () {
     console.info("Image loaded !");
-    if (wallpaper.width < window.innerWidth || wallpaper.height < window.innerHeight) {
-      loadWallpaper();
-      return;
-    }
     hideLoading();
     wallpaper.style.visibility = 'visible';
     Materialize.fadeInImage('#wallpaper');
@@ -122,12 +115,6 @@ function isImage(url) {
     return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
 }
 
-var getLocation = function(href) {
-    var l = document.createElement("a");
-    l.href = href;
-    return l;
-};
-
 function showLoading() {
   $('#loader').load('loader.html'); 
 }
@@ -136,8 +123,16 @@ function hideLoading() {
    $('#loader').hide();
 }
 
+function showProgress(el) {
+  $('#'+el).show();
+}
+
+function hideProgress(el) {
+  $('#'+el).hide();
+}
+
 $(document).ready(function() {
-  //hideLoading();
+  getLocation();
 });
 
 
@@ -179,11 +174,6 @@ function loadChromecast() {
     console.log('Receiver Manager started');
   };
 
-/*  function displayText(text) {
-   // Messages received here from client
-    document.getElementById("message").innerHTML = text;
-
-  }*/
 
 }
 
