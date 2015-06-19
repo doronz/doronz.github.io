@@ -56,6 +56,34 @@
   margin: 24px;
 }
 
+.icon-col {
+  display: inline-block;
+  float: left;
+  position: relative;
+  top: 50%;
+  
+}
+
+.card-detail {
+  float:right;
+}
+
+#weather-icon {
+  width: auto;
+  height: 64px;
+  padding: 0px;
+  position: relative;
+  top: 50%;
+  bottom: 50%;
+  float: left;
+  color: #151515;
+  transform: translateY(40%);
+}
+
+#location {
+  bottom:0;
+}
+
 div.hidden {
   display: none;
 }
