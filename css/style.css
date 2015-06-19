@@ -45,7 +45,6 @@
 
 #weather {
   opacity: 0.7;
-  min-height: 15%;
   position: fixed;
   text-align: center;
   width: 25%;
@@ -59,6 +58,9 @@
 
 }
 
+div.hidden {
+  display: none;
+}
 
 .custom-shadow {
   text-shadow: 6px 6px 0px rgba(0,0,0,0.2);

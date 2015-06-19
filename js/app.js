@@ -50,7 +50,7 @@ function loadWeather(lat, long) {
   var data;
   $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
       //console.log(JSON.stringify(data, null, '  '));
-      hideProgress($('#weather-progress'));
+      hideProgress();
       $('#temp-min').html(Math.round(data.daily.data[0].temperatureMin) + "\u00B0"); 
       $('#temp-max').html(Math.round(data.daily.data[0].temperatureMax) + "\u00B0");
       $('#sunset').html(data.hourly.summary);
@@ -123,12 +123,12 @@ function hideLoading() {
    $('#loader').hide();
 }
 
-function showProgress(el) {
-  $('#'+el).show();
+function showProgress() {
+  $('#weather-progress').removeClass('hidden').show();
 }
 
-function hideProgress(el) {
-  $('#'+el).hide();
+function hideProgress() {
+  $('#weather-progress').hide();
 }
 
 $(document).ready(function() {
