@@ -154,8 +154,8 @@ function loadChromecast() {
 
     window.messageBus.onMessage = function(event) {
       console.log('Message [' + event.senderId + ']: ' + event.data);
-      console.log(parseFloat(message.split(':')));
       var message = event.data;
+      console.log(parseFloat(message.split(':')));
       message.split(':');
       var lati = parseFloat(message[0]);
       var long = parseFloat(message[1]);
