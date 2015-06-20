@@ -10,9 +10,6 @@
   transform: translate(-50%, -50%);
 }
 
-#wrapper {
-   height:100%;
-}
 
 #wallpaper {
  z-index: 0; 
@@ -59,6 +56,14 @@
   left: 0;
   bottom: 0;
   margin: 24px;
+}
+
+#weather-progress {
+  width: 90%;
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  padding: 0;
 }
 
 .icon-col {

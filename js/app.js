@@ -35,7 +35,7 @@ function startTime() {
 }
 
 function getLocation(){
-  showProgress($('#weather-progress'));
+  showProgress();
   navigator.geolocation.getCurrentPosition(function(position) {
     loadWeather(position.coords.latitude, position.coords.longitude);
     });
