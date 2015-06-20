@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 .centered {
   position: fixed;
   top: 50%;
@@ -43,6 +47,7 @@
 }
 
 #weather {
+  display: table;
   line-height: 1.0;
   opacity: 0.8;
   position: fixed;
@@ -57,11 +62,8 @@
 }
 
 .icon-col {
-  display: inline-block;
-  float: left;
-  position: relative;
-  top: 50%;
-  
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .card-detail {
@@ -72,12 +74,7 @@
   width: auto;
   height: 64px;
   padding: 0px;
-  position: relative;
-  top: 50%;
-  bottom: 50%;
-  float: left;
   color: #151515;
-  transform: translateY(40%);
 }
 
 #location {
