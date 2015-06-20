@@ -2118,10 +2118,10 @@ ul.staggered-list li {
   opacity: 0;
   transform-origin: 0 50%; }
 
-/*********************
+********************
   Media Query Classes
-**********************/
-@media only screen and (max-width : 600px) {
+*********************
+/*@media only screen and (max-width : 600px) {
   .hide-on-small-only, .hide-on-small-and-down {
     display: none !important; } }
 
@@ -2163,7 +2163,7 @@ ul.staggered-list li {
 
 @media only screen and (max-width : 600px) {
   .center-on-small-only {
-    text-align: center; } }
+    text-align: center; } }*/
 
 footer.page-footer {
   margin-top: 20px;
