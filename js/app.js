@@ -1,3 +1,8 @@
+var PLAY_ALARM = "play alarm";
+var STOP_ALARM = "stop alarm";
+var ALARM_PLAYING = "alarm playing";
+var ALARM_NOT_PLAYING = "alarm not playing";
+
 function checkTime(i) {
     if (i < 10) {
         i = "0" + i;
@@ -174,13 +179,7 @@ function loadChromecast() {
 
 
     window.messageBus.onMessage = function(event) {
-      console.log('Message [' + event.senderId + ']: ' + event.data);
-      var message = event.data.split(':');
-      var lati = parseFloat(message[0]);
-      var long = parseFloat(message[1]);
-      console.log("Lat/Long: " + lati + " - " + long);
-      loadWeather(lati, long);
-      playAlarm(event);
+      
     }
 
     // initialize the CastReceiverManager
@@ -193,18 +192,44 @@ function loadChromecast() {
 
 }
 
-function playAlarm(event) {
-    if (isPlaying){
-        audio.pause();
-        window.messageBus.send(event.senderId, 'snooze');
-        isPlaying = false;
-      }
-      else {
+function handleMessage(msg) {
+  console.log('Message [' + event.senderId + ']: ' + event.data);
+  if (event.data.indexOf(":") !=-1) { // If received long/lat, load weather
+    var message = event.data.split(':');
+    var lati = parseFloat(message[0]);
+    var long = parseFloat(message[1]);
+    console.log("Lat/Long: " + lati + " - " + long);
+    loadWeather(lati, long);
+  }
+  else if (event.data.indexOf(PLAY_ALARM) !=-1){
+    playAlarm(true);
+  }
+  else if (event.data.indexOf(STOP_ALARM) != -1) {
+    playAlarm(false);
+  }
+}
+
+function playAlarm(play) {
+    if (play){
         audio.play();
-        window.messageBus.send(event.senderId, 'alarm');
+        window.messageBus.send(event.senderId, ALARM_PLAYING);
         isPlaying = true;
       }
+      else {
+        audio.pause();
+        audio = new Audio('good_morning.mp3');
+        audio.bind("ended", function(){
+          window.messageBus.send(event.senderId, ALARM_NOT_PLAYING);
+        }
+        isPlaying = false;
+      }
   
+}
+
+function audioEndedListener(){
+  audio.bind("ended", function(){
+    window.messageBus.send(event.senderId, ALARM_NOT_PLAYING);
+  }
 }
 
 /** Weather icons **/
