@@ -84,7 +84,7 @@
 
 #weather-icon {
   width: auto;
-  height: 64px;
+  height: 56px;
   padding: 0px;
   color: #151515;
 }
@@ -104,7 +104,7 @@
 }
 
 #summary {
-  font-size: 24px;
+  font-size: 20px;
   max-width: 100%;
   word-wrap:break-word;
   margin: auto;
