@@ -243,7 +243,7 @@ function showAlarm() {
 
 function hideAlarm() {
   console.log("Hiding alarm");
-  
+  document.getElementById('content').removeChild('alarm-view');
 }
 
 
