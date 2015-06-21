@@ -180,16 +180,7 @@ function loadChromecast() {
       var long = parseFloat(message[1]);
       console.log("Lat/Long: " + lati + " - " + long);
       loadWeather(lati, long);
-      if (isPlaying){
-        audio.pause();
-        window.messageBus.send(event.senderId, 'snooze');
-        isPlaying = false;
-      }
-      else {
-        audio.play();
-        window.messageBus.send(event.senderId, 'alarm');
-        isPlaying = true;
-      }
+      playAlarm(event);
     }
 
     // initialize the CastReceiverManager
@@ -202,6 +193,19 @@ function loadChromecast() {
 
 }
 
+function playAlarm(event) {
+    if (isPlaying){
+        audio.pause();
+        window.messageBus.send(event.senderId, 'snooze');
+        isPlaying = false;
+      }
+      else {
+        audio.play();
+        window.messageBus.send(event.senderId, 'alarm');
+        isPlaying = true;
+      }
+  
+}
 
 /** Weather icons **/
 function loadWeatherIcons(icon){
