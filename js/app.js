@@ -249,9 +249,7 @@ function hideAlarm() {
 
 
 function audioEndedListener(aud){
-  aud.bind("ended", function(){
-    playAlarm(STOP_ALARM);
-  });
+  aud.bind("ended", playAlarm(STOP_ALARM));
 }
 
 /** Weather icons **/
