@@ -205,21 +205,21 @@ function handleMessage(msg) {
     loadWeather(lati, long);
   }
   else if (event.data.indexOf(PLAY_ALARM) !=-1){
-    playAlarm(true);
+    playAlarm(PLAY_ALARM);
   }
   else if (event.data.indexOf(STOP_ALARM) != -1) {
-    playAlarm(false);
+    playAlarm(STOP_ALARM);
   }
 }
 
 function playAlarm(play) {
-    if (play){
+    if (play == PLAY_ALARM){
         audio.play();
         showAlarm();
         window.messageBus.send(event.senderId, ALARM_PLAYING);
         isPlaying = true;
       }
-      else {
+      else if (play == STOP_ALARM) {
         audio.pause();
         hideAlarm();
         audio = new Audio('good_morning.mp3');
