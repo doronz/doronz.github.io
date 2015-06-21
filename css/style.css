@@ -94,19 +94,17 @@
 }
 
 #temp-max {
-  align-self: center;
-  display: table-cell;
+  display: inline-block;
   color: #151515;
 }
 
 #temp-min {
-  align-content: center;
-  display: table-cell;
+  display: inline-block;
   color: #bdbdbd;
 }
 
 #summary {
-  font-size: 24px;
+  font-size: 16px;
   max-width: 100%;
   word-wrap:break-word;
   margin: auto;
