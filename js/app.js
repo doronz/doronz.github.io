@@ -232,7 +232,7 @@ function showAlarm() {
   var content = document.getElementById('content');
   var alarmView = document.createElement('H1');
   alarmView.id = 'alarm-view';
-  alarmView.addClass('centered');
+  alarmView.className = 'centered';
   var alarmText = document.createTextNode(currentTime.hour + ':' + currentTime.minute);
   alarmView.appendChild(alarmText);
   content.appendChild(alarmView);
