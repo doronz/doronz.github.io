@@ -182,7 +182,7 @@ function loadChromecast() {
 
 
     window.messageBus.onMessage = function(event) {
-      
+      handleMessage(event);
     }
 
     // initialize the CastReceiverManager
@@ -196,10 +196,10 @@ function loadChromecast() {
 }
 
 function handleMessage(msg) {
-  console.log('Message [' + event.senderId + ']: ' + event.data);
-  console.log('index: ' + event.data.indexOf(":"));
-  if (event.data.indexOf(":") !=-1) { // If received long/lat, load weather
-    var message = event.data.split(':');
+  console.log('Message [' + msg.senderId + ']: ' + event.data);
+  console.log('index: ' + msg.data.indexOf(":"));
+  if (msg.data.indexOf(":") !=-1) { // If received long/lat, load weather
+    var message = msg.data.split(':');
     var lati = parseFloat(message[0]);
     var long = parseFloat(message[1]);
     console.log("Lat/Long: " + lati + " - " + long);
