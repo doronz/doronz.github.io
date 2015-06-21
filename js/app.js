@@ -1,3 +1,5 @@
+var NAMESPACE = 'urn:x-cast:com.doronzehavi.casttest';
+
 var PLAY_ALARM = "play alarm";
 var STOP_ALARM = "stop alarm";
 var ALARM_PLAYING = "alarm playing";
@@ -177,8 +179,7 @@ function loadChromecast() {
   
     // create a CastMessageBus to handle messages for a custom namespace
     window.messageBus =
-      window.castReceiverManager.getCastMessageBus(
-      'urn:x-cast:com.doronzehavi.casttest');
+      window.castReceiverManager.getCastMessageBus(NAMESPACE);
 
 
     window.messageBus.onMessage = function(event) {
@@ -213,17 +214,20 @@ function handleMessage(msg) {
 }
 
 function playAlarm(play) {
+    var messageBus = window.castReceiverManager.getCastMessageBus(NAMESPACE);
     if (play == PLAY_ALARM){
         audio.play();
         showAlarm();
-        window.messageBus.send(event.senderId, ALARM_PLAYING);
+        console.log("sending message: " + ALARM_PLAYING);
+        messageBus.send(event.senderId, ALARM_PLAYING);
         isPlaying = true;
       }
       else if (play == STOP_ALARM) {
         audio.pause();
         hideAlarm();
         audio = new Audio('good_morning.mp3');
-        window.messageBus.send(event.senderId, ALARM_NOT_PLAYING);
+        console.log("sending message: " + ALARM_NOT_PLAYING);
+        messageBus.send(event.senderId, ALARM_NOT_PLAYING);
       }
 }
 
