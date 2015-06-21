@@ -6,6 +6,7 @@ var ALARM_PLAYING = "alarm playing";
 var ALARM_NOT_PLAYING = "alarm not playing";
 
 var messageBus;
+var sender;
 
 var currentTime = {
   "hour" : "00",
@@ -96,8 +97,6 @@ var wallpapers = [];
 var _getRedditData = function(callback) {
   var random = Math.floor(Math.random() * 15);
   var api = "https://www.reddit.com/r/EarthPorn+pics+wallpaper+wallpapers+spaceporn/search.json?q=1920%201080&sort=top&restrict_sr=on&t=week&chosen=" + random;
-  
-  // this starts running
   $.getJSON(api, function(data) {
          $.each(data.data.children, function(i, item) {
              wallpapers.push(item.data.url);
@@ -185,6 +184,7 @@ function loadChromecast() {
     messageBus = window.messageBus;
 
     window.messageBus.onMessage = function(event) {
+      sender = event.senderId;
       handleMessage(event);
     }
 
@@ -215,13 +215,31 @@ function handleMessage(msg) {
   }
 }
 
+var attempts = 0;
+function sendMessage(msg) {
+  if (attempts < 5) {
+    if (messageBus == null) {
+      attempts++;
+      console.error("Failed sending msg: " + msg + " (" + attempts + ' attempts)');
+      setTimeout(function () {
+        sendMessage(sender,msg)
+      }, 1000);
+      return;
+    }
+    else {
+      messageBus.send(sender, msg);
+      attempts = 0;
+    }
+  }
+}
+
 function playAlarm(play) {
   if (play == PLAY_ALARM){
     audio.play();
     audioEndedListener(audio);
     showAlarm();
     console.log("sending message: " + ALARM_PLAYING);
-    messageBus.send(event.senderId, ALARM_PLAYING);
+    sendMessage(ALARM_PLAYING);
     isPlaying = true;
   }
   else if (play == STOP_ALARM) {
@@ -229,7 +247,7 @@ function playAlarm(play) {
     hideAlarm();
     audio = new Audio('good_morning.mp3');
     console.log("sending message: " + ALARM_NOT_PLAYING);
-    messageBus.send(event.senderId, ALARM_NOT_PLAYING);
+    sendMessage(ALARM_NOT_PLAYING);
   }
 }
 
@@ -245,12 +263,12 @@ function showAlarm() {
 
 function hideAlarm() {
   console.log("Hiding alarm");
-  document.getElementById('content').removeChild('alarm-view');
+  $('content').hide();
 }
 
 
 function audioEndedListener(aud){
-  aud.bind("ended", playAlarm(STOP_ALARM));
+  //aud.bind("ended", playAlarm(STOP_ALARM));
 }
 
 /** Weather icons **/
