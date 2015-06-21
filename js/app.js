@@ -3,7 +3,13 @@ var STOP_ALARM = "stop alarm";
 var ALARM_PLAYING = "alarm playing";
 var ALARM_NOT_PLAYING = "alarm not playing";
 
-function checkTime(i) {
+var currentTime = {
+  "hour" : "00",
+  "minute" : "00",
+  "second" : 00
+}
+
+function getLeadingZero(i) {
     if (i < 10) {
         i = "0" + i;
     }
@@ -20,19 +26,16 @@ function get12Hour(i) {
 }
 function startTime() {
     var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
-    // add a zero in front of numbers<10
-    h = get12Hour(h);
-    m = checkTime(m);
-    document.getElementById('time').innerHTML = h + ":" + m;
-    t = setTimeout(function () {
+    currentTime.hour   = get12Hour(today.getHours());
+    currentTime.minute = getLeadingZero(today.getMinutes());
+    currentTime.second = today.getSeconds();
+    document.getElementById('time').innerHTML = currentTime.hour + ":" + currentTime.minute;
+    setTimeout(function () {
         startTime()
     }, 1000);
-    console.log("time: " + h + ":" + m);
+    console.log("time: " + currentTime.hour + ":" + currentTime.minute);
     //if (s % 5 == 0) { // load new wallpaper 5 seconds
-    if (m == 0 && s == 0) { // load new wallpaper every hour
+    if (currentTime.minute % 5 == 0 && currentTime.second == 0) { // load new wallpaper every 5 minutes
         if (loaded) {
           loadWallpaper();
         }
@@ -212,22 +215,38 @@ function handleMessage(msg) {
 function playAlarm(play) {
     if (play){
         audio.play();
+        showAlarm();
         window.messageBus.send(event.senderId, ALARM_PLAYING);
         isPlaying = true;
       }
       else {
         audio.pause();
+        hideAlarm();
         audio = new Audio('good_morning.mp3');
-        audio.bind("ended", function(){
-          window.messageBus.send(event.senderId, ALARM_NOT_PLAYING);
-        });
+        window.messageBus.send(event.senderId, ALARM_NOT_PLAYING);
       }
+}
+
+function showAlarm() {
+  console.log("Showing alarm");
+  var content = document.getElementById('content');
+  var alarmView = document.createElement('H1');
+  alarmView.id = 'alarm-view';
+  alarmView.addClass('centered');
+  var alarmText = document.createTextNode(currentTime.hour + ':' + currentTime.minute);
+  alarmView.appendChild(alarmText);
+  content.appendChild(alarmView);
+}
+
+function hideAlarm() {
+  console.log("Hiding alarm");
   
 }
 
+
 function audioEndedListener(){
   audio.bind("ended", function(){
-    window.messageBus.send(event.senderId, ALARM_NOT_PLAYING);
+    playAlarm(STOP_ALARM);
   });
 }
 
