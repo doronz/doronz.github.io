@@ -94,14 +94,15 @@
 }
 
 #temp-max {
-  display: inline;
+  align-self: center;
+  display: table-cell;
   color: #151515;
 }
 
 #temp-min {
-  display: inline;
+  align-content: center;
+  display: table-cell;
   color: #bdbdbd;
-  position: absolute;
 }
 
 #summary {
