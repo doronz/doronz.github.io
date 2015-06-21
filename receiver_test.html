@@ -11,36 +11,18 @@
     </head>
     <body>
       <div id="wrapper">
-          <!-- HEADER -->
           <div id="header">
             <div id="loader" class="centered"></div>
-            <div id="wallpaper"></div>
+            <div id="wallpaper" style="z-index:0" ></div>
           </div>
-        
-          <!-- Content -->
           <div id="content">
-            <div id="weather" class="card-panel">
-              
-              <div id="weather-progress" class="progress hidden">
-                <div class="indeterminate"></div>
-              </div>
-              
-              <div id="weather-detail">
-                <div class="icon-col">
-                  <canvas id="weather-icon"></canvas>
+            <div id="card" class="card-panel" style="z-index: 1">
+                <div id="prog" class='progress' >
+                    <div class="indeterminate"></div>
                 </div>
-
-                <div class="card-detail">
-                  <div id="temp-min"></div>
-                  <div id="temp-max"></div>
-                  <h5 id="summary"></h5>
-                  <h6 id="location"></h6>
-                </div>
-              </div>
+    
             </div>
           </div>
-        
-          <!-- FOOTER -->
           <div id="footer">
             <div id="time" class="custom-shadow"></div>
           </div>

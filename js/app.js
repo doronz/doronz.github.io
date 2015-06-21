@@ -47,6 +47,8 @@ function loadWeather(lat, long) {
   var lati = lat;
   var longi = long;
   var data;
+  var weatherDetail = $('weather-detail');
+  weatherDetail.hide();
   console.log(url + apiKey + "/" + lati + "," + longi);
   $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
       //console.log(JSON.stringify(data, null, '  '));
@@ -72,7 +74,9 @@ function loadWeather(lat, long) {
           }
         }
         $('#location').html(city + ', ' + state);
+              weatherDetail.show();
       });
+
     });
 }
 

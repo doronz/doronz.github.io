@@ -44,21 +44,16 @@
 }
 
 #weather {
+  display: table;
+  line-height: 1.0;
   opacity: 0.8;
   position: fixed;
+  text-align: center;
   width: 25%;
+  font-size: 50px;
   left: 0;
   bottom: 0;
   margin: 24px;
-  display: table-cell;
-  vertical-align: middle;
-}
-
-#weather-detail {
-    display: table;
-    font-size: 50px;
-    text-align: center;
-    line-height: 1.0;
 }
 
 .card-panel {
@@ -67,7 +62,7 @@
 }
 
 #weather-progress {
-  display: inline-block;
+  display: block;
 }
 
 .icon-col {
@@ -108,3 +103,4 @@ div.hidden {
 #loader {
   z-index: 100;
 }
+
