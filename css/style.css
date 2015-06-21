@@ -65,7 +65,7 @@
 
 #weather-detail {
     display: table;
-    font-size: 50px;
+    font-size: 42px;
     text-align: center;
     line-height: 1.0;
     vertical-align: middle;
@@ -105,9 +105,9 @@
 }
 
 #summary {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
-  max-width: 100%;
+  max-width: 90%;
   word-wrap:break-word;
   margin: auto;
 }
