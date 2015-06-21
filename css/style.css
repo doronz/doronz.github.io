@@ -46,10 +46,11 @@
 #weather {
   opacity: 0.8;
   position: fixed;
-  width: 25%;
+  max-width: 25%;
   left: 0;
   bottom: 0;
   margin: 24px;
+  border-radius: 16px;
   display: table-cell;
   vertical-align: middle;
 }
@@ -97,6 +98,7 @@ div.hidden {
 #temp-max {
   display: inline;
   color: #151515;
+  position: absolute;
 }
 
 #temp-min {
