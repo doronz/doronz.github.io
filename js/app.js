@@ -5,6 +5,8 @@ var STOP_ALARM = "stop alarm";
 var ALARM_PLAYING = "alarm playing";
 var ALARM_NOT_PLAYING = "alarm not playing";
 
+var messageBus;
+
 var currentTime = {
   "hour" : "00",
   "minute" : "00",
@@ -180,7 +182,7 @@ function loadChromecast() {
     // create a CastMessageBus to handle messages for a custom namespace
     window.messageBus =
       window.castReceiverManager.getCastMessageBus(NAMESPACE);
-
+    messageBus = window.messageBus;
 
     window.messageBus.onMessage = function(event) {
       handleMessage(event);
@@ -214,7 +216,6 @@ function handleMessage(msg) {
 }
 
 function playAlarm(play) {
-  var messageBus = window.castReceiverManager.getCastMessageBus(NAMESPACE);
   if (play == PLAY_ALARM){
     audio.play();
     audioEndedListener(audio);
