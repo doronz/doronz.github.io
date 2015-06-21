@@ -197,7 +197,6 @@ function loadChromecast() {
 
 function handleMessage(msg) {
   console.log('Message [' + msg.senderId + ']: ' + event.data);
-  console.log('index: ' + msg.data.indexOf(":"));
   if (msg.data.indexOf(":") !=-1) { // If received long/lat, load weather
     var message = msg.data.split(':');
     var lati = parseFloat(message[0]);
