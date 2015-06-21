@@ -49,22 +49,25 @@
   max-width: 25%;
   left: 0;
   bottom: 0;
-  margin: 24px;
-  border-radius: 16px;
   display: table-cell;
   vertical-align: middle;
 }
+
+
 
 #weather-detail {
     display: table;
     font-size: 50px;
     text-align: center;
     line-height: 1.0;
+
 }
 
 .card-panel {
   box-sizing: border-box;
   width: 100%;
+  margin: 24px;
+  border-radius: 4px;
 }
 
 #weather-progress {
@@ -85,6 +88,7 @@
 
 #location {
   bottom:0;
+  font-size: 16px;
 }
 
 div.hidden {
@@ -95,10 +99,14 @@ div.hidden {
   text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
 }
 
+#temp {
+  text-align: center;
+  
+}
+
 #temp-max {
   display: inline;
   color: #151515;
-  position: absolute;
 }
 
 #temp-min {
@@ -106,6 +114,9 @@ div.hidden {
   color: #bdbdbd;
 }
 
+#summary {
+  font-size: 24px;
+}
 
 #loader {
   z-index: 100;
