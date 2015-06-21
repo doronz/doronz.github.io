@@ -214,21 +214,22 @@ function handleMessage(msg) {
 }
 
 function playAlarm(play) {
-    var messageBus = window.castReceiverManager.getCastMessageBus(NAMESPACE);
-    if (play == PLAY_ALARM){
-        audio.play();
-        showAlarm();
-        console.log("sending message: " + ALARM_PLAYING);
-        messageBus.send(event.senderId, ALARM_PLAYING);
-        isPlaying = true;
-      }
-      else if (play == STOP_ALARM) {
-        audio.pause();
-        hideAlarm();
-        audio = new Audio('good_morning.mp3');
-        console.log("sending message: " + ALARM_NOT_PLAYING);
-        messageBus.send(event.senderId, ALARM_NOT_PLAYING);
-      }
+  var messageBus = window.castReceiverManager.getCastMessageBus(NAMESPACE);
+  if (play == PLAY_ALARM){
+    audio.play();
+    audioEndedListener(audio);
+    showAlarm();
+    console.log("sending message: " + ALARM_PLAYING);
+    messageBus.send(event.senderId, ALARM_PLAYING);
+    isPlaying = true;
+  }
+  else if (play == STOP_ALARM) {
+    audio.pause();
+    hideAlarm();
+    audio = new Audio('good_morning.mp3');
+    console.log("sending message: " + ALARM_NOT_PLAYING);
+    messageBus.send(event.senderId, ALARM_NOT_PLAYING);
+  }
 }
 
 function showAlarm() {
@@ -247,8 +248,8 @@ function hideAlarm() {
 }
 
 
-function audioEndedListener(){
-  audio.bind("ended", function(){
+function audioEndedListener(aud){
+  aud.bind("ended", function(){
     playAlarm(STOP_ALARM);
   });
 }
@@ -262,6 +263,7 @@ function loadWeatherIcons(icon){
 
 /** Alarm Sounds **/
 var audio = new Audio('good_morning.mp3');
+audioEndedListener(audio);
 var isPlaying = false;
 
 
