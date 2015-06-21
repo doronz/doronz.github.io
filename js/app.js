@@ -238,7 +238,6 @@ function showAlarm() {
   alarmView.id = 'alarm-view';
   alarmView.className = 'centered';
   alarmView.innerHTML = currentTime.hour + ':' + currentTime.minute;
-  alarmView.appendChild(alarmText);
   content.appendChild(alarmView);
 }
 
