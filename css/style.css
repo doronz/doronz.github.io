@@ -86,6 +86,7 @@
   width: auto;
   height: 56px;
   padding: 0px;
+  margin: -8px;
   color: #151515;
 }
 #temp {
