@@ -220,8 +220,7 @@ function playAlarm(play) {
         audio = new Audio('good_morning.mp3');
         audio.bind("ended", function(){
           window.messageBus.send(event.senderId, ALARM_NOT_PLAYING);
-        }
-        isPlaying = false;
+        });
       }
   
 }
@@ -229,7 +228,7 @@ function playAlarm(play) {
 function audioEndedListener(){
   audio.bind("ended", function(){
     window.messageBus.send(event.senderId, ALARM_NOT_PLAYING);
-  }
+  });
 }
 
 /** Weather icons **/
