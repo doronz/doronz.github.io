@@ -249,7 +249,7 @@ function playAlarm(play) {
 
 function showAlarm() {
   console.log("Showing alarm");
-  var content = document.getElementById('alarm-view-container');
+  var container = document.getElementById('alarm-view-container');
   var alarmView = document.createElement('H1');
   alarmView.id = 'alarm-view';
   alarmView.innerHTML = currentTime.hour + ':' + currentTime.minute;
@@ -264,7 +264,7 @@ function hideAlarm() {
   console.log("Hiding alarm");
   var alarmView = document.getElementById('alarm-view');
   var container = document.getElementById('alarm-view-container');
-  content.removeChild(alarmView);
+  container.removeChild(alarmView);
   $('#time').show();
 }
 
