@@ -256,7 +256,7 @@ function showAlarm() {
   setTimeout(function () {
     alarmView.innerHTML = currentTime.hour + ':' + currentTime.minute;
   }, 1000);
-  content.appendChild(alarmView);
+  container.appendChild(alarmView);
   $('#time').hide();
 }
 
