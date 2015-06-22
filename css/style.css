@@ -40,9 +40,28 @@
     position: absolute;
 }
 
+#alarm-view-container {
+
+}
+
+#alarm-icon {
+  width: 10em;
+  height: 10em;
+  display: inline-block;
+  color: white;
+}
+
 #alarm-view {
-  color: aliceblue;
-  
+  color: white;
+  display: inline-block;
+  line-height: 1em;
+  margin: 0;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 10px;
+  border: solid;
+  border-color: white;
+  padding: 0.25em;
+  font-size: 10em;
 }
 
 
