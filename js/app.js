@@ -76,7 +76,6 @@ function loadWeather(lat, long) {
       $.getJSON(geoAPI, function(data) {
         console.log(geoAPI);
         //console.log(JSON.stringify(data.results[0].address_components));
-        //$('location').html(data.results.address_components[4].long_name);
         var city, state;
         for (var i = 0; i < data.results[0].address_components.length; i++){
           if (data.results[0].address_components[i].types[0].indexOf("locality") !=-1){
@@ -89,7 +88,6 @@ function loadWeather(lat, long) {
         $('#location').html(city + ', ' + state);
               weatherDetail.show();
       });
-
     });
 }
 
@@ -116,36 +114,6 @@ var getLinks = function() {
 };
 
 var chosen;
-/*
-function loadWallpaper() {
-  var wallpaperContainer = document.getElementById('wallpaper');
-  var wallpaper = new Image();
-  var random;
-  do {
-    random = Math.floor(Math.random() * wallpapers.length);
-  } while (chosen == random || !isImage(wallpapers[random]));
-  chosen = random;
-  wallpaper.setAttribute('src', wallpapers[chosen]);
-  showLoading();
-  wallpaper.style.visibility = 'hidden';
-  if (wallpaperContainer.firstChild)
-    wallpaperContainer.removeChild(wallpaperContainer.firstChild);
-  wallpaperContainer.appendChild(wallpaper);
-  wallpaper.onload = function () {
-    console.info("Image loaded !");
-    hideLoading();
-    wallpaper.style.visibility = 'visible';
-    Materialize.fadeInImage('#wallpaper');
-  }
-  wallpaper.onerror = wallpaper.onabort = function () {
-    console.info("Error loading image!");
-    loadWallpaper();
-    return;
-  }
-  console.log("set to " + wallpapers[chosen]);
-}
-*/
-
 function loadWallpaper() {
   var wallpaper = new Image();
   var random;
@@ -291,7 +259,7 @@ function showAlarm() {
 
 function hideAlarm() {
   console.log("Hiding alarm");
-  $('content').hide();
+  $('#alarm-view').remove();
 }
 
 
