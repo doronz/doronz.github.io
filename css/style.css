@@ -62,7 +62,7 @@
 #weather {
   opacity: 0.8;
   position: fixed;
-  max-width: 25%;
+  max-width: 35%;
   left: 0;
   bottom: 0;
   display: table-cell;
