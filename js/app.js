@@ -116,6 +116,7 @@ var getLinks = function() {
 };
 
 var chosen;
+/*
 function loadWallpaper() {
   var wallpaperContainer = document.getElementById('wallpaper');
   var wallpaper = new Image();
@@ -143,6 +144,31 @@ function loadWallpaper() {
   }
   console.log("set to " + wallpapers[chosen]);
 }
+*/
+
+function loadWallpaper() {
+  var wallpaper = new Image();
+  var random;
+  do {
+    random = Math.floor(Math.random() * wallpapers.length);
+  } while (chosen == random || !isImage(wallpapers[random]));
+  chosen = random;
+  wallpaper.setAttribute('src', wallpapers[chosen]);
+  showLoading();
+  wallpaper.onload = function () {
+    var sourceURL = "url(" + wallpaper.src + ")";
+    $("#content").css("background-image", sourceURL);
+    hideLoading();
+  } 
+  wallpaper.onerror = wallpaper.onabort = function () {
+    console.info("Error loading image!");
+    loadWallpaper();
+    return;
+  }
+}
+
+
+
 
 function isImage(url) {
     return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
