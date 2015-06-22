@@ -249,18 +249,20 @@ function playAlarm(play) {
 
 function showAlarm() {
   console.log("Showing alarm");
-  var content = document.getElementById('content');
+  var content = document.getElementById('alarm-view-container');
   var alarmView = document.createElement('H1');
   alarmView.id = 'alarm-view';
-  alarmView.className = 'centered';
   alarmView.innerHTML = currentTime.hour + ':' + currentTime.minute;
+  setTimeout(function () {
+    alarmView.innerHTML = currentTime.hour + ':' + currentTime.minute;
+  }, 1000);
   content.appendChild(alarmView);
 }
 
 function hideAlarm() {
   console.log("Hiding alarm");
   var alarmView = document.getElementById('alarm-view');
-  var content = document.getElementById('content');
+  var container = document.getElementById('alarm-view-container');
   content.removeChild(alarmView);
 }
 

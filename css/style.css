@@ -40,6 +40,11 @@
     position: absolute;
 }
 
+#alarm-view {
+  color: aliceblue;
+  
+}
+
 
 #time {
     font-size: 100px;
