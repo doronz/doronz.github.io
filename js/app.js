@@ -257,6 +257,7 @@ function showAlarm() {
     alarmView.innerHTML = currentTime.hour + ':' + currentTime.minute;
   }, 1000);
   content.appendChild(alarmView);
+  $('#time').hide();
 }
 
 function hideAlarm() {
@@ -264,6 +265,7 @@ function hideAlarm() {
   var alarmView = document.getElementById('alarm-view');
   var container = document.getElementById('alarm-view-container');
   content.removeChild(alarmView);
+  $('#time').show();
 }
 
 
