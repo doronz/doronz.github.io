@@ -259,7 +259,9 @@ function showAlarm() {
 
 function hideAlarm() {
   console.log("Hiding alarm");
-  $('#content').remove("#alarm-view");
+  var alarmView = document.getElementById('alarm-view');
+  var content = document.getElementById('content');
+  content.removeChild(alarmView);
 }
 
 
