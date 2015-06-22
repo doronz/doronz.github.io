@@ -127,7 +127,8 @@ function loadWallpaper() {
   wallpaper.setAttribute('src', wallpapers[chosen]);
   showLoading();
   wallpaper.style.visibility = 'hidden';
-  wallpaperContainer.removeChild(wallpaperContainer.firstChild);
+  if (wallpaperContainer.firstChild)
+    wallpaperContainer.removeChild(wallpaperContainer.firstChild);
   wallpaperContainer.appendChild(wallpaper);
   wallpaper.onload = function () {
     console.info("Image loaded !");
