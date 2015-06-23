@@ -151,10 +151,14 @@ function hideLoading() {
 }
 
 function showProgress() {
+  $("#loading-subtext").html("Waiting for location...");
+  $('#loader-container').removeClass('hidden').show();
   $('#weather-progress').removeClass('hidden').show();
+  
 }
 
 function hideProgress() {
+  $('#loader-container').hide();
   $('#weather-progress').hide();
 }
 

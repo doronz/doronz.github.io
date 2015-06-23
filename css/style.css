@@ -102,9 +102,22 @@
     vertical-align: middle;
 }
 
+/* LOADERS */
+#loader-container {
+  height: 90%; 
+  text-align:center; 
+  display:table;
+  width:100%;
+}
 
 #weather-progress {
   display: inline-block;
+}
+
+
+#loading-text, loading-subtext {
+  display: table-cell;
+  vertical-align: middle;
 }
 
 
