@@ -8,6 +8,42 @@ var ALARM_NOT_PLAYING = "alarm not playing";
 var messageBus;
 var sender;
 
+/********************
+  Load App
+*********************/
+
+
+function loadChromecast() {
+  window.onload = function() {
+    cast.receiver.logger.setLevelValue(0);
+    window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
+    
+    window.castReceiverManager.onSenderDisconnected = function(event) {
+      if (window.castReceiverManager.getSenders().length == 0 &&
+         event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER){
+        window.close();
+      }
+    }
+  
+    // create a CastMessageBus to handle messages for a custom namespace
+    window.messageBus =
+      window.castReceiverManager.getCastMessageBus(NAMESPACE);
+    messageBus = window.messageBus;
+
+    window.messageBus.onMessage = function(event) {
+      sender = event.senderId;
+      handleMessage(event);
+    }
+
+    
+    // initialize the CastReceiverManager
+    var appConfig = new cast.receiver.CastReceiverManager.Config();
+    appConfig.maxInactivity = 6000;
+    window.castReceiverManager.start(appConfig);
+    console.log('Receiver Manager started');
+  };
+}
+
 var currentTime = {
   "hour" : "00",
   "minute" : "00",
@@ -126,6 +162,7 @@ function loadWallpaper() {
   wallpaper.onload = function () {
     var sourceURL = "url(" + wallpaper.src + ")";
     $("#content").css("background-image", sourceURL);
+    sendMessage("url:" + wallpaper.src);
     hideLoading();
   } 
   wallpaper.onerror = wallpaper.onabort = function () {
@@ -134,8 +171,6 @@ function loadWallpaper() {
     return;
   }
 }
-
-
 
 
 function isImage(url) {
@@ -172,31 +207,7 @@ function setFooter() {
   document.getElementById('footer').setAttribute('height', timeHeight);
 }
 
-function loadChromecast() {
-  window.onload = function() {
-    cast.receiver.logger.setLevelValue(0);
-    window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
-  
-  
-    // create a CastMessageBus to handle messages for a custom namespace
-    window.messageBus =
-      window.castReceiverManager.getCastMessageBus(NAMESPACE);
-    messageBus = window.messageBus;
 
-    window.messageBus.onMessage = function(event) {
-      sender = event.senderId;
-      handleMessage(event);
-    }
-
-    // initialize the CastReceiverManager
-    var appConfig = new cast.receiver.CastReceiverManager.Config();
-    appConfig.maxInactivity = 6000;
-    window.castReceiverManager.start(appConfig);
-    console.log('Receiver Manager started');
-  };
-
-
-}
 
 function handleMessage(msg) {
   console.log('Message [' + msg.senderId + ']: ' + event.data);
@@ -236,7 +247,7 @@ function sendMessage(msg) {
 function playAlarm(play) {
   if (play == PLAY_ALARM){
     audio.play();
-    audioEndedListener(audio);
+    //audioEndedListener(audio);
     showAlarm();
     console.log("sending message: " + ALARM_PLAYING);
     sendMessage(ALARM_PLAYING);
@@ -273,10 +284,6 @@ function hideAlarm() {
 }
 
 
-function audioEndedListener(aud){
-  //aud.bind("ended", playAlarm(STOP_ALARM));
-}
-
 /** Weather icons **/
 function loadWeatherIcons(icon){
   var skycons = new Skycons({"color": "#151515"});
@@ -286,10 +293,8 @@ function loadWeatherIcons(icon){
 
 /** Alarm Sounds **/
 var audio = new Audio('good_morning.mp3');
-audioEndedListener(audio);
+//audioEndedListener(audio);
 var isPlaying = false;
-
-
 
 /* On Startup */
 showLoading();
