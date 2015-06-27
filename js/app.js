@@ -239,6 +239,7 @@ function sendMessage(msg) {
     }
     else {
       messageBus.send(sender, msg);
+      console.log("Message sent to: " + sender + " \"" + msg + "\".");
       attempts = 0;
     }
   }
