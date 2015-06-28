@@ -9,10 +9,11 @@ var messageBus;
 var sender;
 
 /********************
-  Load Chromecast
+  Chromecast
 *********************/
 function onChannelOpened(event) {
    console.log("onChannelOpened. Total number of channels: " + window.castReceiverManager.getSenders().length);
+    syncWallpaper();
 }
 
 function onChannelClosed(event) {
@@ -53,6 +54,12 @@ function broadcast(message){
 }
 
 window.addEventListener("load", onLoad);
+
+/** Chromecast Methods **/
+function syncWallpaper() {
+  var bg = $('#content').css('background-image');
+  sendMessage(bg);
+}
 
 /********************
   Other stuff
