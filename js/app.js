@@ -42,7 +42,12 @@ function onLoad(){
 }
 
 function broadcast(message){
+  try {
     window.customMessageBus.broadcast(message);
+    }
+  catch (err){
+    console.error("Unable to send broadcast:" + err);
+    }
 }
 
 window.addEventListener("load", onLoad);
