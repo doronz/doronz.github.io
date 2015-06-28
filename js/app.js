@@ -247,21 +247,9 @@ function handleMessage(msg) {
 
 var attempts = 0;
 function sendMessage(msg) {
-  if (attempts < 5) {
-    if (messageBus == null) {
-      attempts++;
-      console.error("Failed sending msg (Message bus is null): " + msg + " (" + attempts + ' attempts)');
-      setTimeout(function () {
-        sendMessage(msg)
-      }, 1000);
-      return;
-    }
-    else {
-      broadcast(msg)
-      console.log("Message sent to: " + messageBus.senders + " \"" + msg + "\".");
-      attempts = 0;
-    }
-  }
+    broadcast(msg);
+    console.log("Message sent to: " + messageBus.senders + " \"" + msg + "\".");
+    attempts = 0;
 }
 
 function playAlarm(play) {
