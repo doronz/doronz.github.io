@@ -25,9 +25,11 @@ function onError(){
 }
 
 function onMessage(event){
-    var message = event.data;
-    var senderId = event.senderId;
-   console.log("message from: " + senderId + " message: " + message);
+  var message = event.data;
+  handleMessage(message);
+  var senderId = event.senderId;
+  console.log("message from: " + senderId + " message: " + message);
+  
 }
 
 function onLoad(){
