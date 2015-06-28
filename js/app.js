@@ -231,17 +231,17 @@ function handleMessage(msg) {
 var attempts = 0;
 function sendMessage(msg) {
   if (attempts < 5) {
-    if (messageBus == null) {
+    if (window.messageBus == null) {
       attempts++;
-      console.error("Failed sending msg: " + msg + " (" + attempts + ' attempts)');
+      console.error("Failed sending msg (Message bus is null): " + msg + " (" + attempts + ' attempts)');
       setTimeout(function () {
         sendMessage(msg)
       }, 1000);
       return;
     }
     else {
-      messageBus.send(msg);
-      console.log("Message sent to: " + sender + " \"" + msg + "\".");
+      messageBus.send(messageBus.senders, msg);
+      console.log("Message sent to: " + messageBus.getSenders()[0] + " \"" + msg + "\".");
       attempts = 0;
     }
   }
