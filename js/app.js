@@ -38,7 +38,7 @@ function onLoad(){
     window.castReceiverManager.onSenderConnected = onChannelOpened;
     window.castReceiverManager.onSenderDisconnected = onChannelClosed;
 
-    window.customMessageBus = window.castReceiverManager.getCastMessageBus(namespace);
+    window.customMessageBus = window.castReceiverManager.getCastMessageBus(NAMESPACE);
     window.customMessageBus.onMessage = onMessage;
 
 
