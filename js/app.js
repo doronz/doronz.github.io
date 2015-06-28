@@ -26,7 +26,7 @@ function onError(){
 
 function onMessage(event){
   var message = event.data;
-  handleMessage(message);
+  handleMessage(event);
   var senderId = event.senderId;
   console.log("message from: " + senderId + " message: " + message);
   
