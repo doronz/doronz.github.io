@@ -257,7 +257,7 @@ function sendMessage(msg) {
       return;
     }
     else {
-      messageBus.send(messageBus.senders, msg);
+      broadcast(msg)
       console.log("Message sent to: " + messageBus.senders + " \"" + msg + "\".");
       attempts = 0;
     }
