@@ -9,42 +9,59 @@ var messageBus;
 var sender;
 
 /********************
-  Load App
+  Load Chromecast
 *********************/
-
-
-function loadChromecast() {
-  window.onload = function() {
-    cast.receiver.logger.setLevelValue(0);
-    window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
-    
-    window.castReceiverManager.onSenderDisconnected = function(event) {
-      console.error("Sender disconnected!");
-      if (window.castReceiverManager.getSenders().length == 0 &&
-         event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER){
-        console.info("Closing window due sender requesting disconnect.");
-        window.close();
-      }
-    }
-  
-    // create a CastMessageBus to handle messages for a custom namespace
-    window.messageBus =
-      window.castReceiverManager.getCastMessageBus(NAMESPACE);
-    messageBus = window.messageBus;
-
-    window.messageBus.onMessage = function(event) {
-      sender = event.senderId;
-      handleMessage(event);
-    }
-
-    
-    // initialize the CastReceiverManager
-    var appConfig = new cast.receiver.CastReceiverManager.Config();
-    appConfig.maxInactivity = 6000;
-    window.castReceiverManager.start(appConfig);
-    console.log('Receiver Manager started');
-  };
+function onChannelOpened(event) {
+   console.log("onChannelOpened. Total number of channels: " + window.castReceiverManager.getSenders().length);
 }
+
+function onChannelClosed(event) {
+   console.log("onChannelClosed. Total number of channels: " + window.castReceiverManager.getSenders().length);
+    if (window.castReceiverManager.getSenders().length == 0) window.close();
+}
+
+function onError(){
+   console.log("onError");
+}
+
+function onMessage(event){
+    var message = event.data;
+    var senderId = event.senderId;
+   console.log("message from: " + senderId + " message: " + message);
+}
+
+function onLoad(){
+   console.log("document loaded");
+
+    window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
+
+    window.castReceiverManager.onSenderConnected = onChannelOpened;
+    window.castReceiverManager.onSenderDisconnected = onChannelClosed;
+
+    window.customMessageBus = window.castReceiverManager.getCastMessageBus(namespace);
+    window.customMessageBus.onMessage = onMessage;
+
+
+    window.castReceiverManager.start();
+
+   console.log("cast started");
+
+    window.setInterval(onTimer, 2000);
+}
+
+function onTimer(){
+    broadcast("timer");
+}
+
+function broadcast(message){
+    window.customMessageBus.broadcast(message);
+}
+
+window.addEventListener("load", onLoad);
+
+/********************
+  Other stuff
+*********************/
 
 var currentTime = {
   "hour" : "00",
@@ -301,7 +318,6 @@ var isPlaying = false;
 
 /* On Startup */
 showLoading();
-loadChromecast();
 getLinks();
 startTime();
 setFooter();
