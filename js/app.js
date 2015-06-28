@@ -235,12 +235,12 @@ function sendMessage(msg) {
       attempts++;
       console.error("Failed sending msg: " + msg + " (" + attempts + ' attempts)');
       setTimeout(function () {
-        sendMessage(sender,msg)
+        sendMessage(msg)
       }, 1000);
       return;
     }
     else {
-      messageBus.send(sender, msg);
+      messageBus.send(msg);
       console.log("Message sent to: " + sender + " \"" + msg + "\".");
       attempts = 0;
     }
