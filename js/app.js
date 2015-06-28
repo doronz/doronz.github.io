@@ -19,8 +19,10 @@ function loadChromecast() {
     window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
     
     window.castReceiverManager.onSenderDisconnected = function(event) {
+      console.error("Sender disconnected!");
       if (window.castReceiverManager.getSenders().length == 0 &&
          event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER){
+        console.info("Closing window due sender requesting disconnect.");
         window.close();
       }
     }
