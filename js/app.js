@@ -31,26 +31,14 @@ function onMessage(event){
 }
 
 function onLoad(){
-   console.log("document loaded");
-
-    window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
-
-    window.castReceiverManager.onSenderConnected = onChannelOpened;
-    window.castReceiverManager.onSenderDisconnected = onChannelClosed;
-
-    window.customMessageBus = window.castReceiverManager.getCastMessageBus(NAMESPACE);
-    window.customMessageBus.onMessage = onMessage;
-
-
-    window.castReceiverManager.start();
-
-   console.log("cast started");
-
-    window.setInterval(onTimer, 2000);
-}
-
-function onTimer(){
-    broadcast("timer");
+  console.log("document loaded");
+  window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
+  window.castReceiverManager.onSenderConnected = onChannelOpened;
+  window.castReceiverManager.onSenderDisconnected = onChannelClosed;
+  window.customMessageBus = window.castReceiverManager.getCastMessageBus(NAMESPACE);
+  window.customMessageBus.onMessage = onMessage;
+  window.castReceiverManager.start();
+  console.log("cast started");
 }
 
 function broadcast(message){
