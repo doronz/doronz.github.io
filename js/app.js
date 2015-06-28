@@ -241,7 +241,7 @@ function sendMessage(msg) {
     }
     else {
       messageBus.send(messageBus.senders, msg);
-      console.log("Message sent to: " + messageBus.getSenders()[0] + " \"" + msg + "\".");
+      console.log("Message sent to: " + messageBus.senders + " \"" + msg + "\".");
       attempts = 0;
     }
   }
