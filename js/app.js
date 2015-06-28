@@ -82,7 +82,7 @@ function startTime() {
         startTime()
     }, 1000);
     console.log("time: " + currentTime.hour + ":" + currentTime.minute);
-    if (currentTime.second % 5 == 0) { // load new wallpaper 5 seconds
+    if (currentTime.second % 15 == 0) { // load new wallpaper 15 seconds
     //if (currentTime.minute % 5 == 0 && currentTime.second == 0) { // load new wallpaper every 5 minutes
         if (loaded) {
           loadWallpaper();
