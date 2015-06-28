@@ -58,6 +58,7 @@ window.addEventListener("load", onLoad);
 /** Chromecast Methods **/
 function syncWallpaper() {
   var bg = $('#content').css('background-image');
+  bg = bg.replace('url(','').replace(')','');
   sendMessage(bg);
 }
 
