@@ -169,7 +169,7 @@ function loadWallpaper() {
   wallpaper.onload = function () {
     var sourceURL = "url(" + wallpaper.src + ")";
     $("#content").css("background-image", sourceURL);
-    sendMessage("url:" + wallpaper.src);
+    sendMessage(wallpaper.src);
     hideLoading();
   } 
   wallpaper.onerror = wallpaper.onabort = function () {
