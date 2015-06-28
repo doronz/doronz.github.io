@@ -248,7 +248,7 @@ function handleMessage(msg) {
 var attempts = 0;
 function sendMessage(msg) {
     broadcast(msg);
-    console.log("Message sent to: " + messageBus.senders + " \"" + msg + "\".");
+    console.log("Sending message: " + msg);
     attempts = 0;
 }
 
