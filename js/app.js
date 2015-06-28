@@ -231,7 +231,7 @@ function handleMessage(msg) {
 var attempts = 0;
 function sendMessage(msg) {
   if (attempts < 5) {
-    if (window.messageBus == null) {
+    if (messageBus == null) {
       attempts++;
       console.error("Failed sending msg (Message bus is null): " + msg + " (" + attempts + ' attempts)');
       setTimeout(function () {
