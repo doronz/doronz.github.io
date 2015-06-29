@@ -135,7 +135,7 @@ function loadWeather() {
   var data;
   var weatherDetail = $('#weather-detail');
   weatherDetail.hide();
-  console.log(url + apiKey + "/" + user_lati + "," + longi);
+  console.log(url + apiKey + "/" + user_lati + "," + user_longi);
   $.getJSON(url + apiKey + "/" + user_lati + "," + user_longi + "?callback=?", function(data) {
       //console.log(JSON.stringify(data, null, '  '));
       hideProgress();
