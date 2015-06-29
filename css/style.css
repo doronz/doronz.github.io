@@ -110,6 +110,10 @@
   display: inline-block;
 }
 
+#loading {
+  background-color: floralwhite;
+  border-radius: 100%;
+}
 
 #loading-text, loading-subtext {
   display: table-cell;
