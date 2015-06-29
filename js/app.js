@@ -124,7 +124,7 @@ function getLocation(){
 
 function enableWeather() {
   console.log("Weather enabled.");
-  $('#weather').show();
+  $('#weather').show(2000);
 }
 
 function disableWeather() {
@@ -145,7 +145,6 @@ function loadWeather() {
       $('#temp-min').html(Math.round(data.daily.data[0].temperatureMin) + "\u00B0"); 
       $('#temp-max').html(Math.round(data.daily.data[0].temperatureMax) + "\u00B0");
       $('#summary').html(data.hourly.summary);
-      $('#weather').fadeIn(2500);
       loadWeatherIcons(data.daily.data[0].icon);
       /* getting location name */
       var geoAPI = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + user_lati + ',' + user_long +'&key=AIzaSyCp8gYYsbSTYhKB8G2oGU2xbID_PxdNSOw';
