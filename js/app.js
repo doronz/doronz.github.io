@@ -258,7 +258,7 @@ function handleMessage(msg) {
     console.log("Lat/Long: " + user_lati + " - " + user_long);
     loadWeather();
   }
-  else if (msg.data.indexOf(KEY_WEATHER_ENABLE)) {
+  else if (msg.data.indexOf(KEY_WEATHER_ENABLE) != -1) {
     var message = msg.data.split(':');
     console.log("Weather-Enable: " + message[0] + ":" + message[1]);
     if (message[1] == 'true'){
