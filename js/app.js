@@ -253,7 +253,7 @@ function handleMessage(msg) {
     user_lati = parseFloat(message[1]);
     user_long = parseFloat(message[2]);
     console.log("Lat/Long: " + user_lati + " - " + user_long);
-    loadweather();
+    loadWeather();
   }
   else if (msg.data.indexOf(KEY_WEATHER_ENABLE)) {
     var message = msg.data.split(':');
