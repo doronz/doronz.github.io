@@ -14,6 +14,7 @@ var sender;
 
 var user_lati;
 var user_long;
+var user_enable_weather;
 
 /********************
   Chromecast
@@ -122,10 +123,12 @@ function getLocation(){
 }
 
 function enableWeather() {
+  console.log("Weather enabled.");
   $('#weather').show();
 }
 
 function disableWeather() {
+  console.log("Weather hidden.");
   $('#weather').hide();
 }
 
@@ -159,7 +162,7 @@ function loadWeather() {
           }
         }
         $('#location').html(city + ', ' + state);
-              weatherDetail.show();
+        weatherDetail.show();
       });
     });
 }
@@ -257,10 +260,14 @@ function handleMessage(msg) {
   }
   else if (msg.data.indexOf(KEY_WEATHER_ENABLE)) {
     var message = msg.data.split(':');
-    if (message[1] == 'true')
+    if (message[1] == 'true'){
+      user_enable_weather = true;
       enableWeather();
-    else
+    }
+    else{
+      user_enable_weather = false;
       disableWeather();
+    }
   }
 }
 
