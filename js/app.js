@@ -1,4 +1,8 @@
 var NAMESPACE = 'urn:x-cast:com.doronzehavi.casttest';
+var KEY_WEATHER_ENABLE = "weather_enable";
+var WEATHER_ENABLE_DEFAULT = "true";
+var KEY_USER_LOCATION = "user_location";
+
 
 var PLAY_ALARM = "play alarm";
 var STOP_ALARM = "stop alarm";
@@ -7,6 +11,9 @@ var ALARM_NOT_PLAYING = "alarm not playing";
 
 var messageBus;
 var sender;
+
+var user_lati;
+var user_long;
 
 /********************
   Chromecast
@@ -108,20 +115,28 @@ function startTime() {
 function getLocation(){
   showProgress();
   navigator.geolocation.getCurrentPosition(function(position) {
-    loadWeather(position.coords.latitude, position.coords.longitude);
+    user_lati = position.coords.latitude;
+    user_long = position.coords.longitude;
+    loadWeather();
     });
 }
 
-function loadWeather(lat, long) {
+function enableWeather() {
+  $('#weather').show();
+}
+
+function disableWeather() {
+  $('#weather').hide();
+}
+
+function loadWeather() {
   var apiKey = 'b075f45fbfc81a2a9cdfd9741db90c90';
   var url = 'https://api.forecast.io/forecast/';
-  var lati = lat;
-  var longi = long;
   var data;
-  var weatherDetail = $('weather-detail');
+  var weatherDetail = $('#weather-detail');
   weatherDetail.hide();
-  console.log(url + apiKey + "/" + lati + "," + longi);
-  $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
+  console.log(url + apiKey + "/" + user_lati + "," + longi);
+  $.getJSON(url + apiKey + "/" + user_lati + "," + user_longi + "?callback=?", function(data) {
       //console.log(JSON.stringify(data, null, '  '));
       hideProgress();
       $('#temp-min').html(Math.round(data.daily.data[0].temperatureMin) + "\u00B0"); 
@@ -130,7 +145,7 @@ function loadWeather(lat, long) {
       $('#weather').fadeIn(2500);
       loadWeatherIcons(data.daily.data[0].icon);
       /* getting location name */
-      var geoAPI = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lati + ',' + longi +'&key=AIzaSyCp8gYYsbSTYhKB8G2oGU2xbID_PxdNSOw';
+      var geoAPI = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + user_lati + ',' + user_longi +'&key=AIzaSyCp8gYYsbSTYhKB8G2oGU2xbID_PxdNSOw';
       $.getJSON(geoAPI, function(data) {
         console.log(geoAPI);
         //console.log(JSON.stringify(data.results[0].address_components));
@@ -233,18 +248,19 @@ function setFooter() {
 
 function handleMessage(msg) {
   console.log('Message [' + msg.senderId + ']: ' + event.data);
-  if (msg.data.indexOf(":") !=-1) { // If received long/lat, load weather
+  if (msg.data.indexOf(KEY_USER_LOCATION) !=-1) {
     var message = msg.data.split(':');
-    var lati = parseFloat(message[0]);
-    var long = parseFloat(message[1]);
-    console.log("Lat/Long: " + lati + " - " + long);
-    loadWeather(lati, long);
+    user_lati = parseFloat(message[1]);
+    user_long = parseFloat(message[2]);
+    console.log("Lat/Long: " + user_lati + " - " + user_long);
+    loadweather();
   }
-  else if (event.data.indexOf(PLAY_ALARM) !=-1){
-    playAlarm(PLAY_ALARM);
-  }
-  else if (event.data.indexOf(STOP_ALARM) != -1) {
-    playAlarm(STOP_ALARM);
+  else if (msg.data.indexOf(KEY_WEATHER_ENABLE)) {
+    var message = msg.data.split(':');
+    if (message[1] == 'true')
+      enableWeather();
+    else
+      disableWeather();
   }
 }
 
