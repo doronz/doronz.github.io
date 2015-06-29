@@ -86,6 +86,7 @@
   max-width: 35%;
   left: 0;
   bottom: 0;
+  display: none;
   vertical-align: middle;
 }
 
