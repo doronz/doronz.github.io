@@ -260,6 +260,7 @@ function handleMessage(msg) {
   }
   else if (msg.data.indexOf(KEY_WEATHER_ENABLE)) {
     var message = msg.data.split(':');
+    console.log("Weather-Enable: " + message[0] + ":" + message[1]);
     if (message[1] == 'true'){
       user_enable_weather = true;
       enableWeather();
