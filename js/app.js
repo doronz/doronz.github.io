@@ -135,8 +135,8 @@ function loadWeather() {
   var data;
   var weatherDetail = $('#weather-detail');
   weatherDetail.hide();
-  console.log(url + apiKey + "/" + user_lati + "," + user_longi);
-  $.getJSON(url + apiKey + "/" + user_lati + "," + user_longi + "?callback=?", function(data) {
+  console.log(url + apiKey + "/" + user_lati + "," + user_long);
+  $.getJSON(url + apiKey + "/" + user_lati + "," + user_long + "?callback=?", function(data) {
       //console.log(JSON.stringify(data, null, '  '));
       hideProgress();
       $('#temp-min').html(Math.round(data.daily.data[0].temperatureMin) + "\u00B0"); 
@@ -145,7 +145,7 @@ function loadWeather() {
       $('#weather').fadeIn(2500);
       loadWeatherIcons(data.daily.data[0].icon);
       /* getting location name */
-      var geoAPI = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + user_lati + ',' + user_longi +'&key=AIzaSyCp8gYYsbSTYhKB8G2oGU2xbID_PxdNSOw';
+      var geoAPI = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + user_lati + ',' + user_long +'&key=AIzaSyCp8gYYsbSTYhKB8G2oGU2xbID_PxdNSOw';
       $.getJSON(geoAPI, function(data) {
         console.log(geoAPI);
         //console.log(JSON.stringify(data.results[0].address_components));
