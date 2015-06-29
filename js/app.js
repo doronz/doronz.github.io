@@ -124,7 +124,7 @@ function getLocation(){
 
 function enableWeather() {
   console.log("Weather enabled.");
-  $('#weather').show(2000);
+  $('#weather').show();
 }
 
 function disableWeather() {
