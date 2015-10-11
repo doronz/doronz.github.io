@@ -1,26 +1,108 @@
-  <!DOCTYPE html>
-  <html>
-    <head>
-    	<title>Doron's Cool Site</title>
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Doron Zehavi</title>
 
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    </head>
-    <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container">
-    	<a href="#" class="brand-logo center">Doron Zehavi</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="receiver.html">Chromecast Receiver</a></li>
-      </ul>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="light-blue darken-4" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Doron Zehavi</a>
+
     </div>
   </nav>
-    <body>
-      
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center blue-grey-text">About Me</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">I am a Software Engineer that recently graduated from UC Davis with a B.S. in Computer Science. I am passionate about technology and currently focusing on Android development.</h5>
+      </div>
+      <div class="row center">
+        <a href="Resume%20-%20Draft%201%20-%202016.pdf" id="download-button" class="btn-large waves-effect red accent-4">See Resume</a>
+      </div>
+      <br><br>
 
-    </body>
-  </html>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+      <h2 class="header center blue-grey-text">Projects</h1>
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">snooze</i></h2>
+            <h5 class="center">CastAwake</h5>
+
+            <p class="light">An alarm clock that wakes up the user by turning on their TV using Chromecast’s
+HDMI-CEC capability. It then alerts the user with their specied media (such as a
+podcast or YouTube video).</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">query_builder</i></h2>
+            <h5 class="center">Dapper Watch</h5>
+
+            <p class="light">Developed the companion app and watch face that allows user to customize their
+watch face utilizing custom components that I designed.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">library_books</i></h2>
+            <h5 class="center">Spree - Speed Reader</h5>
+
+            <p class="light">This app allows users to load an .epub book or an article and speed read it at a desired
+WPM with various settings like pauses between sentences and multiple words.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+
+    <div class="section">
+
+    </div>
+  </div>
+
+  <footer class="page-footer light-blue darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li class="white-text">(408) 203-7084</li>
+            <li><a class="white-text" href="#!">LinkedIn</a></li>
+            <li><a class="white-text" href="#!">GitHub</a></li>
+            <li><a class="white-text" href="#!">E-mail</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by me with the help of <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../../bin/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>
