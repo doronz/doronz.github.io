@@ -53,6 +53,7 @@ background: linear-gradient(to top, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Fir
     text-align: center;
         margin-bottom: 64px;
     margin-top: -16px;
+    color: rgba(0,0,0,.54);
 }
 
 .button-bar {
