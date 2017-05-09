@@ -15,14 +15,9 @@
  */
 
 body {
-/*    background-color: #78909C;*/
-background: #003973;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #E5E5BE, #003973);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #E5E5BE, #003973); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: #36D1DC;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background-color: #78909C; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     margin: 0;
     padding: 0;
     height: 100%;
@@ -42,18 +37,18 @@ background: linear-gradient(to top, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Fir
   top: 30%;
 }
 
+.doron-subtitle {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 64px;
+    margin-top: -16px;
+    color: rgba(0,0,0,.54);
+}
+
 .doron-name {
     font-size: 60px;
     text-align: center;
     margin: 0;
-}
-
-.doron-subtitle {
-    font-size: 32px;
-    text-align: center;
-        margin-bottom: 64px;
-    margin-top: -16px;
-    color: rgba(0,0,0,.54);
 }
 
 .button-bar {
@@ -65,3 +60,24 @@ background: linear-gradient(to top, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Fir
 .mdl-button {
     margin: 4px;
 }
+
+@media only screen and (max-width: 500px) {
+     .doron-content {
+      border-radius: 2px;
+      padding: 24px;
+      margin: auto;
+      width: 350px;
+      height: 175px;
+      position: relative;
+         top: 5%;
+    }
+    
+    .doron-subtitle {
+        margin-bottom: 12px;
+    }
+    
+    .mdl-button {
+        font-size: 12px;
+    }
+}
+
