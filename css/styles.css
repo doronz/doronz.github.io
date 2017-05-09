@@ -16,12 +16,17 @@
 
 body {
     background-color: #78909C;
+    margin: 0;
+    padding: 0;
 }
+
 .doron-content {
   border-radius: 2px;
   padding: 56px;
-  margin: 20vh auto;
-    width: 450px;
+  margin: auto;
+  margin-top: calc(25% - 120px);
+  width: 400px;
+  height: 200px;
 }
 
 .doron-name {
@@ -37,19 +42,12 @@ body {
     margin-top: -16px;
 }
 
-.demo-main {
-  height: 50%;
-  display: block;
-}
-
-.demo-container {
-  margin: 20vh auto;
-}
-
-
-
 .button-bar {
     margin: auto;
     text-align: center;
+    display: table;
+}
 
+.mdl-button {
+    margin: 4px;
 }
