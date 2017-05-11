@@ -27,6 +27,50 @@ body {
     height: 100vh;
 }
 
+.projects-wrapper{
+    display: flex;
+    -webkit-flex-flow: column wrap;
+   flex-flow: column wrap;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.projects-content {
+  border-radius: 2px;
+  padding: 48px;
+  margin: 0 auto;
+  width: 800px;
+  height: 480px;
+  width: 80%;
+  height: 50%;
+}
+
+.project-name {
+    display: inline-block;
+    font-size: 48px;
+    letter-spacing: 3px;
+    margin: 0;
+    line-height: 1;
+}
+
+.project-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 18px;
+    color: rgba(0,0,0,.54);
+    display: block;
+    padding: 4px;
+    margin: 0;
+}
+
+.open-project{
+    color: rgba(0,0,0,.87);
+    font-size: 40px;
+    float: right;
+}
+
 .doron-content {
   border-radius: 2px;
   padding: 48px;
@@ -94,6 +138,30 @@ body {
     border-radius: 50%;
     float: left;
 }
+
+.arrow-wrapper{
+    text-align: center;
+    color: whitesmoke;
+    position: absolute;
+    margin: 0 auto;
+    bottom: 0%;
+    left: calc(50% - 30px);
+    padding-bottom: 70px;
+}
+
+.down-arrow {
+    animation: bouncing 1.25s infinite ease-in-out;
+    font-size: 42px;
+    position: absolute;
+    left: calc(50% - 21px);
+}
+
+.arrow-text {
+    font-weight: 500;
+    letter-spacing: 0;
+    font-size: 20px;
+}
+
 
 @media only screen and (max-width: 560px) {
     .wrapper {
@@ -205,4 +273,38 @@ body {
 @-o-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
+}
+
+@keyframes bouncing {
+    0% {bottom: 0;}
+    50% {bottom: 20px;}
+    100% {bottom: 0;}
+}
+
+/* Firefox < 16 */
+@-moz-keyframes bouncing {
+    0% {bottom: 0;}
+    50% {bottom: 20px;}
+    100% {bottom: 0;}
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes bouncing {
+    0% {bottom: 0;}
+    50% {bottom: 20px;}
+    100% {bottom: 0;}
+}
+
+/* Internet Explorer */
+@-ms-keyframesbouncing {
+    0% {bottom: 0;}
+    50% {bottom: 20px;}
+    100% {bottom: 0;}
+}
+
+/* Opera < 12.1 */
+@-o-keyframes bouncing {
+    0% {bottom: 0;}
+    50% {bottom: 20px;}
+    100% {bottom: 0;}
 }
