@@ -26,6 +26,7 @@ body {
     flex-direction: column;
     height: 100vh;
 }
+
 .doron-content {
   border-radius: 2px;
   padding: 48px;
@@ -36,8 +37,20 @@ body {
 
 .doron-name {
     font-size: 48px;
+    letter-spacing: 3px;
     margin: 0;
     line-height: 1;
+}
+    
+.doron-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 18px;
+    color: rgba(0,0,0,.54);
+    display: block;
+    padding: 0 4px;
+    margin: 0;
 }
 
 .button-bar {
@@ -95,7 +108,22 @@ body {
 
     .doron-name {
         font-size: 36px;
+        letter-spacing: 2.25px;
+        margin: 0;
+        line-height: 1;
     }
+
+    .doron-subtitle {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.75px;
+        line-height: 14px;
+        color: rgba(0,0,0,.54);
+        display: block;
+        padding: 0 4px;
+        margin: 0;
+    }
+
 
     .mdl-list__item {
         font-size: 12px !important;
