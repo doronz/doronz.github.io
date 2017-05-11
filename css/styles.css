@@ -54,7 +54,7 @@ body {
 }
 
 .button-bar {
-    margin: 24px auto;
+    margin: 16px auto;
     text-align: center;
     display: table;
 }
@@ -64,9 +64,8 @@ body {
     line-height: 0px;
 }
 
-.doron-list-two{
-    padding: 0;
-    margin: 12px 0px;
+.mdl-list__item--two-line{
+    height: 60px;
 }
 
 .mdl-list__item {
@@ -81,6 +80,7 @@ body {
 
 .mdl-list {
     padding: 0;
+    margin-top: 16px;
 }
 
 .doron-list__item-avatar  {
@@ -131,7 +131,7 @@ body {
     }
 
     .mdl-list__item--two-line{
-        height: 54px !important;
+        height: 45px !important;
     }
 
     .mdl-list__item-primary-content{
