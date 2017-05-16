@@ -32,6 +32,7 @@ body {
   border-radius: 2px;
   padding: 36px 72px;
   margin: 0 auto;
+  background-color: ghostwhite;
 }
 
 .doron-name {
@@ -61,6 +62,7 @@ body {
 .chip-link{
     color: transparent;
     font-weight: 300;
+    
 }
 
 .projects-wrapper{
