@@ -18,6 +18,7 @@ body {
     background-color: #78909C; /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-attachment: fixed;
 }
 
 .wrapper {
@@ -72,8 +73,6 @@ body {
   border-radius: 2px;
   padding: 48px;
   margin: 0 auto;
-  width: 60%;
-  height: 50%;
 }
 
 .project-name {
@@ -91,14 +90,12 @@ body {
     line-height: 18px;
     color: rgba(0,0,0,.54);
     display: block;
-    padding: 4px;
     margin: 0;
 }
 
 .open-project{
     color: rgba(0,0,0,.87);
     font-size: 40px;
-    float: right;
 }
 
 
@@ -173,6 +170,7 @@ body {
         padding: 36px;
         width: 300px;
         height: 150px;
+        margin-top: 16px;
     }
 
     .doron-name {
@@ -230,6 +228,16 @@ body {
         line-height: 15px;
         height: 27px;
         min-width: 48px;
+    }
+    
+    .project-name {
+        font-size: 36px;
+        letter-spacing: 0px;
+    }
+    
+    .project-subtitle {
+        font-size: 12px;
+        letter-spacing: 0px;
     }
 }
 
