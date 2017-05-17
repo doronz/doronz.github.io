@@ -1,6 +1,4 @@
-/**
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
+/*
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -172,23 +170,33 @@ body {
   opacity: 0.5;
 }
 
-.right {
-  right: 0;
+.slick-wrapper {
+  overflow: hidden;
 }
 
-.left {
-  left: 0;
+.single-project {
+  margin: 0 10vw;
+  padding: 0 10vw;
+  min-width: 320px;
 }
 
+.mdl-dialog {
+  width: 90%;
+}
 
 @media only screen and (max-width: 560px) {
+  .single-project {
+      margin: 0 auto;
+    } 
+  
+  
     .wrapper {
         justify-content: flex-start;    
     }
     
     .doron-content {
-        padding: 36px;
-        margin: 8px;
+        padding: 18px 36px;
+        margin: 16px;
     }
 
     .doron-name {
@@ -237,7 +245,7 @@ body {
     }
     
     .button-bar {
-        margin: 18px auto;
+      margin: 8px auto;
     }
 
     .mdl-button {
@@ -263,10 +271,6 @@ body {
     }
 }
 
-
-@media only screen and (max-width: 350px) {
-    
-}
 
 .fade-in { 
  -webkit-animation: fadein 2.0s; /* Safari, Chrome and Opera > 12.1 */
