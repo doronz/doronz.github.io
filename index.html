@@ -158,7 +158,12 @@
                     <span class="mdl-chip__text">View Source</span>
                 </span>
                 </a>
-                      
+                <span id="spree-downloads" class="mdl-chip">
+                    <span class="mdl-chip__text">5000+ Downloads</span>
+                </span>
+                <span id="spree-review" class="mdl-chip">
+                    <span class="mdl-chip__text">★★★★☆</span>
+                </span>
           </div>
 
           
@@ -170,14 +175,20 @@
             <button id="next-arrow" class="nav-arrow mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Next</button>
           </div>
     </div>
-    <dialog id="dialog" class="mdl-dialog">
+        <!-- Multiline Tooltip -->
+        <div class="mdl-tooltip mdl-tooltip--top" for="spree-review">
+        Paid: 4.1/63<br>Free: 3.6/50
+        </div>
+        <div class="mdl-tooltip mdl-tooltip--top" for="spree-downloads">
+        Paid: 1,304<br>Free: 5,493
+        </div>
+    <dialog id="spree-dialog" class="mdl-dialog">
   <h3 class="mdl-dialog__title">Demo Video</h3>
   <div class="mdl-dialog__content">
     <!-- TODO: Need to stop youtube video -->
-      <iframe width="853" height="480" src="https://www.youtube.com/embed/z1KnFimhmt8" frameborder="0" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/z1KnFimhmt8" frameborder="0" allowfullscreen></iframe>
   </div>
   <div class="mdl-dialog__actions">
-    
     <button type="button" class="mdl-button">Close</button>
   </div>
 </dialog>

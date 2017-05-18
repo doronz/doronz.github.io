@@ -38,7 +38,7 @@ $('.nav-arrow').click(function() {
 (function() {
     'use strict';
     var dialogButton = document.querySelector('.dialog-button');
-    var dialog = document.querySelector('#dialog');
+    var dialog = document.querySelector('#spree-dialog');
     if (! dialog.showModal) {
       dialogPolyfill.registerDialog(dialog);
     }
