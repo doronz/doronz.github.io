@@ -45,7 +45,6 @@ $('.nav-arrow').click(function() {
     dialogButton.addEventListener('click', function() {
     var currentIndex = $('.slick-current').attr('data-slick-index');
 
-    console.log("current " + currentIndex);
     if(currentIndex === '1') {
       dialog.showModal();
     }
@@ -53,6 +52,9 @@ $('.nav-arrow').click(function() {
     });
     dialog.querySelector('button:not([disabled])')
     .addEventListener('click', function() {
+      var url = $('#spree-video').attr('src');
+      $('#spree-video').attr('src', '');
+      $('#spree-video').attr('src', url);
       dialog.close();
     });
   }());
