@@ -3,7 +3,7 @@ $(document).ready(function(){
     prevArrow: "#prev-arrow",
     nextArrow: "#next-arrow",
     infinite: true,
-    speed: 700,
+    speed:600,
     slidesToShow: 1,
     centerPadding: "5%",
     centerMode: true,
@@ -18,11 +18,23 @@ $('.nav-arrow').click(function() {
     case '0': 
       $('#open-link').attr("href", "http://www.myownfeed.com/");
       $('#open-button').html("Open");
+      $('#open-button').attr("disabled", false);
       break;
     case '1': 
       $('#open-link').attr("href", "#");
       $('#open-button').html("Demo");
-      break; 
+      $('#open-button').attr("disabled", false);
+      break;
+    case '2':
+      $('#open-link').attr("href", "#");
+      $('#open-button').html("Open");
+      $('#open-button').attr("disabled", true);
+      break;
+    case '3':
+      $('#open-link').attr("href", "#");
+      $('#open-button').html("Open");
+      $('#open-button').attr("disabled", true);
+      break;
   }
 });
   
@@ -30,9 +42,15 @@ $('.nav-arrow').click(function() {
   var currentIndex = $('.slick-current').attr('data-slick-index');
   
   console.log("current " + currentIndex);
-  if(currentIndex === '1') {
+  if(currentIndex === '1' || currentIndex === '2') {
       e.preventDefault();
   }
+});
+  
+$("#projects-button").click(function() {
+    $('html,body').animate({
+        scrollTop: $("#projects").offset().top},
+        1250, 'swing');
 });
 
 (function() {

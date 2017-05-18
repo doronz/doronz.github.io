@@ -38,6 +38,7 @@ body {
     letter-spacing: 3px;
     margin: 0;
     line-height: 1;
+    padding-top: 12px;
 }
     
 .doron-subtitle {
@@ -79,7 +80,7 @@ body {
 
 .project-name {
     display: inline-block;
-    font-size: 48px;
+    font-size: 45px;
     letter-spacing: 3px;
     margin: 0;
     line-height: 1;
@@ -148,6 +149,14 @@ body {
     left: calc(50% - 30px);
     padding-bottom: 60px;
     opacity: 0.7;
+}
+
+#projects-button{
+    background: none;
+    border: none;
+    color: white;
+    opacity: 0.7;
+    outline: 0px solid transparent;
 }
 
 .down-arrow {
@@ -284,7 +293,7 @@ body {
     .project-subtitle {
         font-size: 12px;
         letter-spacing: 0px;
-      
+        padding-top: 6px;
     }
 
 }
