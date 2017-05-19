@@ -8,6 +8,7 @@ $(document).ready(function(){
     centerPadding: "5%",
     centerMode: true,
     variableWidth: true,
+      swipe: false,
   });
 
 $('.nav-arrow').click(function() {
