@@ -10,6 +10,8 @@ $(document).ready(function(){
     variableWidth: true,
       swipe: false,
   });
+  
+  
 
 $('.nav-arrow').click(function() {
   var currentIndex = $('.slick-current').attr('data-slick-index');
@@ -56,6 +58,19 @@ $("#projects-button").click(function() {
 
 (function() {
     'use strict';
+  
+    if (navigator.userAgent.toLowerCase().indexOf('chrome') < 0) {
+      $('#projects').hide();
+      $('.arrow-wrapper').hide();
+      $('#spree-dialog').hide();
+      var snackbarContainer = document.querySelector('#snackbar');
+      var data = {
+        message: 'To browse projects, please use Chrome.',
+        timeout: 60000,
+      };
+      snackbarContainer.MaterialSnackbar.showSnackbar(data);
+    }
+  
     var dialogButton = document.querySelector('.dialog-button');
     var dialog = document.querySelector('#spree-dialog');
     if (! dialog.showModal) {
