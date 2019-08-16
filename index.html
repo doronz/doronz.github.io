@@ -1,83 +1,297 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
 <html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Doron Zehavi</title>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Portfolio for Doron Zehavi, a Software Engineer with a Bachelor's of Science in Computer Science.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Doron Zehavi | San Francisco, CA</title>
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+    
+    
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet">
-</head>
-<body>
-  
-  <div id="wrapper">
-    <div id="header">
-      <nav class="light-blue darken-4" role="navigation">
-        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Doron Zehavi</a>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css">
+    <link rel="stylesheet" href="css/styles.css">
 
-        </div>
-      </nav>
-    </div>
-    <div id="content">
-      <div class="section no-pad-bot" id="index-banner">
-        <div class="container">
-          <br><br>
-          <h1 class="header center blue-grey-text">About Me</h1>
-          <div class="row center">
-            <h5 class="header light">Software Engineer</h5>
-            <h5 class="header light">B.S. Computer Science</h5>
-            <h5 class="header light">University of California, Davis '15</h5>
-            <h5 class="header light">Java | Android | SaaS</h5>
-          </div>
-          <div class="row center">
-            <a href="Doron_Zehavi_Resume.pdf" id="download-button" class="btn-large waves-effect red accent-4">See Resume</a>
-          </div>
-          <br><br>
+  </head>
+  <body>
+        <div class="wrapper ">
+          <div class="doron-content fade-in  mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+            <h1 class="doron-name">Doron Zehavi</h1>
+            <h2 class="doron-subtitle">Product Manager | San Francisco, CA</h1>
+            <ul class="mdl-list">
+              <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">work</i>
+                  <span>Product Manager</span>
+                  <span class="mdl-list__item-sub-title">ML for Planning & Financials, Workday, Inc.</span>
+                </span>
+                </li>
+                <li class="mdl-list__item mdl-list__item--two-line">
+                    <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">school</i>
+                    <span>Computer Science, B.S.</span>
+                    <span class="mdl-list__item-sub-title">University of California, Davis '15</span>
+                    </span>
+                </li>
 
-        </div>
-      </div>
-      
-    </div>
-    <div id="footer">
-      <footer class="page-footer light-blue darken-4">
-        <div class="container">
-          <div class="row">
-            <div class="col l3 s12">
-              <h5 class="white-text">Connect</h5>
-              <ul>
-                <li class="white-text">(408) 203-7084</li>
-                <li><a class="white-text" href="https://www.linkedin.com/in/doronzehavi">LinkedIn</a></li>
-                <li><a class="white-text" href="https://github.com/doronz">GitHub</a></li>
               </ul>
+          </div>
+                <div class="button-bar fade-in-up">
+                    <a target="_blank" href="Doron_Zehavi_Resume.pdf"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Resume</button></a>
+                    <a target="_blank" href="http://linkedin.com/in/doronzehavi"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">LinkedIn</button></a>
+                    <!--<a target="_blank" href="http://github.com/doronz"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Github</button></a> -->
+                    <a target="_blank" href="mailto:doron1zehavi@gmail.com"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Email</button></a>
+                </div>
+<!--
+                <div class="arrow-wrapper ">
+                    <button id="projects-button">    
+                      <span class="arrow-text">projects</span>
+                      <i class="material-icons down-arrow bouncing">keyboard_arrow_down</i>
+                    </button>
+                </div>
             </div>
+    
+      <div id="projects" class="projects-wrapper">
+        <div class="slick-wrapper">
+        
+        <div class="single-project">
+          <div id="myownfeed" class="projects-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+            <h1 class="project-name">My Own Feed</h1>
+            <h2 class="project-subtitle">User configurable news feed for web & Android.</h1>
+            <ul class="mdl-list">
+              <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">date_range</i>
+                    <span>Time Frame</span>
+                    <span class="mdl-list__item-sub-title">April 2017 - Ongoing</span>
+                </span>
+               </li>
+              <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">language</i>
+                    <span>Languages</span>
+                    <span class="mdl-list__item-sub-title">Java, SQL, HTML, CSS, Javascript</span>
+                </span>
+               </li>
+               <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">dashboard</i>
+                    <span>Frameworks</span>
+                    <span class="mdl-list__item-sub-title">Spring, Android, Thymeleaf</span>
+                </span>
+               </li>
+               <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">build</i>
+                    <span>Tools</span>
+                    <span class="mdl-list__item-sub-title">IntelliJ, Gradle, Git, Heroku, Postgres, SQLite</span>
+                </span>
+                </li>
+              </ul>
+                  <a class="chip-link" target="_blank" href="https://github.com/doronz/NewsItemWeb">
+                    <span class="chip-row mdl-chip mdl-chip--contact">
+                        <span class="chip-cell material-icons mdl-chip__contact mdl-color--blue mdl-color-text--white">computer</span>
+                        <span class="mdl-chip__text">View Source</span>
+                    </span>
+                </a>
+                <a class="chip-link" target="_blank" href="https://github.com/doronz/NewsItem">
+                    <span class="chip-row mdl-chip mdl-chip--contact">
+                    <span class="chip-cell material-icons mdl-chip__contact mdl-color--teal mdl-color-text--white">android</span>
+                    <span class="mdl-chip__text">View Source</span>
+                </span>
+                </a>
           </div>
+          
         </div>
-        <div class="footer-copyright">
-          <div class="container">
-          Made by me with the help of <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+          <div class="single-project">
+          <div id="spree" class="projects-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+            <h1 class="project-name">Spree                                    </h1>
+            <h2 class="project-subtitle">Speed-read e-books and articles one word at a time.</h1>
+            <ul class="mdl-list">
+              <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">date_range</i>
+                    <span>Time Frame</span>
+                    <span class="mdl-list__item-sub-title">March 2014 - May 2014</span>
+                </span>
+               </li>
+              <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">language</i>
+                    <span>Languages</span>
+                    <span class="mdl-list__item-sub-title">Java</span>
+                </span>
+               </li>
+               <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">dashboard</i>
+                    <span>Frameworks</span>
+                    <span class="mdl-list__item-sub-title">Android</span>
+                </span>
+               </li>
+               <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">build</i>
+                    <span>Tools</span>
+                    <span class="mdl-list__item-sub-title">IntelliJ, Gradle, Git</span>
+                </span>
+                </li>
+              </ul>
+
+                <a class="chip-link" target="_blank" href="https://github.com/doronz/Spree">
+                    <span class="chip-row mdl-chip mdl-chip--contact">
+                    <span class="chip-cell material-icons mdl-chip__contact mdl-color--teal mdl-color-text--white">android</span>
+                    <span class="mdl-chip__text">View Source</span>
+                </span>
+                </a>
+                <span id="spree-downloads" class="mdl-chip">
+                    <span class="mdl-chip__text">5000+ Downloads</span>
+                </span>
+                <span id="spree-review" class="mdl-chip">
+                    <span class="mdl-chip__text">★★★★☆</span>
+                </span>
+            </div>
+          </div> <!-- single project end -->
+          <!--
+          <div class="single-project">
+          <div id="virtualfrontview" class="projects-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+            <h1 class="project-name">Virtual Front View</h1>
+            <h2 class="project-subtitle">Device to device video streaming over Wi-Fi Direct.</h1>
+            <ul class="mdl-list">
+              <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">date_range</i>
+                    <span>Time Frame</span>
+                    <span class="mdl-list__item-sub-title">January 2015 - March 2015</span>
+                </span>
+               </li>
+              <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">language</i>
+                    <span>Languages</span>
+                    <span class="mdl-list__item-sub-title">Java</span>
+                </span>
+               </li>
+               <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">dashboard</i>
+                    <span>Frameworks</span>
+                    <span class="mdl-list__item-sub-title">Android, Wi-Fi Direct</span>
+                </span>
+               </li>
+               <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">build</i>
+                    <span>Tools</span>
+                    <span class="mdl-list__item-sub-title">IntelliJ, Git, Wireshark, Libstreaming, VLC</span>
+                </span>
+                </li>
+              </ul>
+                <a class="chip-link" target="_blank" href="https://github.com/doronz/VirtualFrontView">
+                    <span class="chip-row mdl-chip mdl-chip--contact">
+                    <span class="chip-cell material-icons mdl-chip__contact mdl-color--teal mdl-color-text--white">android</span>
+                    <span class="mdl-chip__text">View Source</span>
+                </span>
+                </a>
           </div>
-        </div>
-      </footer>
+        </div><!-- single project end -->
+          <!--
+          <div class="single-project">
+          <div id="castawake"class="projects-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+            <h1 class="project-name">CastAwake</h1>
+            <h2 class="project-subtitle">Alarm clock that launches TV dashboard using Chromecast.</h1>
+            <ul class="mdl-list">
+              <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">date_range</i>
+                    <span>Time Frame</span>
+                    <span class="mdl-list__item-sub-title">September 2015 - October 2015</span>
+                </span>
+               </li>
+              <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">language</i>
+                    <span>Languages</span>
+                    <span class="mdl-list__item-sub-title">Java, Javascript, HTML, CSS</span>
+                </span>
+               </li>
+               <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">dashboard</i>
+                    <span>Frameworks</span>
+                    <span class="mdl-list__item-sub-title">Android, Google Cast</span>
+                </span>
+               </li>
+               <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons doron-list__item-avatar">build</i>
+                    <span>Tools</span>
+                    <span class="mdl-list__item-sub-title">IntelliJ, Git, CastCompanion</span>
+                </span>
+                </li>
+              </ul>
+                <a class="chip-link" target="_blank" href="https://github.com/doronz/CastAwake">
+                    <span class="chip-row mdl-chip mdl-chip--contact">
+                    <span class="chip-cell material-icons mdl-chip__contact mdl-color--teal mdl-color-text--white">android</span>
+                    <span class="mdl-chip__text">View Source</span>
+                </span>
+                </a>
+          </div>
+        </div><!-- single project end -->
+          <!--
+      </div>
+          <div class="button-bar">
+            <button id="prev-arrow" class="nav-arrow mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Prev</button>
+            <a id="open-link" target="_blank" href="http://www.myownfeed.com"><button id="open-button" class="dialog-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Open</button></a>
+            <button id="next-arrow" class="nav-arrow mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Next</button>
+          </div>
     </div>
+        <div class="mdl-tooltip mdl-tooltip--top" for="spree-review">
+        Paid: 4.1/63<br>Free: 3.6/50
+        </div>
+        <div class="mdl-tooltip mdl-tooltip--top" for="spree-downloads">
+        Paid: 1,304<br>Free: 5,493
+        </div>
+    <dialog id="spree-dialog" class="mdl-dialog">
+  <h3 class="mdl-dialog__title">Demo Video</h3>
+  <div class="mdl-dialog__content">
+
+      <iframe id="spree-video" width="560" height="315" src="https://www.youtube.com/embed/z1KnFimhmt8" frameborder="0" allowfullscreen></iframe>
   </div>
-  
-  
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="../../bin/materialize.js"></script>
-  <script src="js/init.js"></script>
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <div class="mdl-dialog__actions">
+    <button type="button" class="mdl-button">Close</button>
+  </div>
 
-  ga('create', 'UA-70092643-1', 'auto');
-  ga('send', 'pageview');
+</dialog>
 
-</script>
-</div>
+    <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+      <div class="mdl-snackbar__text"></div>
+      <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+-->
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+    <script src="/js/portfolio.js"></script>
+    <script src="/js/analytics.js"></script>
   </body>
 </html>

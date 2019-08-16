@@ -1,0 +1,416 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+body {
+    background-color: #78909C; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-attachment: fixed;
+
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+
+    flex-direction: column;
+    height: 100vh;
+}
+
+.doron-content {
+  border-radius: 2px;
+  padding: 36px 72px;
+  height: 212px;
+  width: 317px;
+  margin: 0 auto;
+  background-color: ghostwhite;
+}
+
+.doron-name {
+    font-size: 48px;
+    letter-spacing: 2px;
+    margin: 0;
+    line-height: 1;
+    padding-top: 12px;
+}
+    
+.doron-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 18px;
+    color: rgba(0,0,0,.54);
+    display: block;
+    padding: 0 4px;
+    margin: 0;
+}
+
+.button-bar {
+    margin: 16px auto;
+    text-align: center;
+    display: table;
+}
+
+.chip-link{
+    color: transparent;
+    font-weight: 400;
+}
+
+.projects-wrapper{
+    display: flex;
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.projects-content {
+  border-radius: 2px;
+  padding: 48px;
+  margin: 0 auto;
+}
+
+.project-name {
+    display: inline-block;
+    font-size: 45px;
+    letter-spacing: 3px;
+    margin: 0;
+    line-height: 1;
+}
+
+.project-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 18px;
+    color: rgba(0,0,0,.54);
+    display: block;
+    margin: 0;
+    padding-top: 12px;
+}
+
+.open-project{
+    color: rgba(0,0,0,.87);
+    font-size: 40px;
+}
+
+
+
+.mdl-button {
+    margin: 4px;
+    line-height: 0px;
+}
+
+.mdl-list__item--two-line{
+    height: 60px;
+}
+
+.mdl-list__item {
+    padding: 0;
+    font-size: 16px;
+}
+
+.mdl-list__item-sub-title {
+    padding: 0;
+    font-size: 16px;
+}
+
+.mdl-list {
+    padding: 0;
+    margin-top: 0px;
+}
+
+.doron-list__item-avatar  {
+    color: rgba(0,0,0,.87);
+    background-color: rgba(0,0,0,0);
+    margin-right: 8px;
+    font-size: 40px;
+    height: 40px;
+    width: 40px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    float: left;
+}
+
+.arrow-wrapper{
+    text-align: center;
+    color: whitesmoke;
+    position: absolute;
+    margin: 0 auto;
+    bottom: 0%;
+    left: calc(50% - 30px);
+    padding-bottom: 60px;
+    opacity: 0.7;
+}
+
+#projects-button{
+    background: none;
+    border: none;
+    color: white;
+    opacity: 0.7;
+    outline: 0px solid transparent;
+}
+
+.down-arrow {
+    animation: bouncing 1.25s infinite ease-in-out;
+    font-size: 42px;
+    position: absolute;
+    left: calc(50% - 21px);
+    outline: 0px solid transparent;
+}
+
+.arrow-text {
+    font-weight: 400;
+    letter-spacing: 0px;
+    font-size: 18px;
+    outline: 0px solid transparent;
+}
+
+.project-nav-arrow {
+  position: absolute;
+  font-size: 80px;  
+  color: white;
+  opacity: 0.5;
+}
+
+.slick-wrapper {
+  overflow: hidden;
+}
+
+.single-project {
+  margin: 0 10vw;
+  padding: 0 10vw;
+  min-width: 320px;
+  max-width: 512px;
+  outline: 0px solid transparent;
+}
+
+#spree-review {
+    color: goldenrod;
+}
+
+    
+#spree-dialog{
+    max-width: 560px;
+    width: 100%;
+}
+
+#spree-icon {
+  width: 60px;
+  height: 60px;
+  float: right;
+  margin:0;
+  padding: 0;
+}
+
+
+
+@media only screen and (max-width: 560px) {
+  .single-project {
+      margin: 0 auto;
+    } 
+  
+  
+    .wrapper {
+        justify-content: flex-start;    
+    }
+    
+    .doron-content {
+        padding: 18px 36px;
+        margin: 16px auto;
+        width: 238px;
+        height: 163px;
+    }
+
+    .doron-name {
+        font-size: 24px;
+        letter-spacing: 2.25px;
+        margin: 0;
+        line-height: 1;
+    }
+
+    .doron-subtitle {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        line-height: 14px;
+        color: rgba(0,0,0,.54);
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+
+
+    .mdl-list__item {
+        font-size: 12px !important;
+        min-height: 36px !important;
+    }
+
+    .mdl-list__item--two-line{
+        height: 45px !important;
+    }
+
+    .mdl-list__item-primary-content{
+        height: 27px !important;
+        line-height: 15px !important;
+    }
+
+    .mdl-list__item-sub-title {
+        font-size: 11px !important;
+        line-height: 14px !important;
+    }
+
+    .doron-list__item-avatar  {
+        margin-right: 8px;
+        font-size: 30px;
+        height: 30px;
+        width: 30px;
+    }
+    
+    .button-bar {
+      margin: 8px auto;
+    }
+
+    .mdl-button {
+        margin: 3px;
+        font-size: 11px;
+        line-height: 15px;
+        height: 27px;
+        min-width: 48px;
+    }
+    .projects-content {
+      border-radius: 2px;
+      padding: 24px;
+      margin: 8px;
+    }
+    .project-name {
+        font-size: 36px;
+        letter-spacing: 0px;
+    }
+    
+    .project-subtitle {
+        font-size: 12px;
+        letter-spacing: 0px;
+        padding-top: 6px;
+    }
+
+}
+
+
+.fade-in { 
+ -webkit-animation: fadein 2.0s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2.0s; /* Firefox < 16 */
+        -ms-animation: fadein 2.0s; /* Internet Explorer */
+         -o-animation: fadein 2.0s; /* Opera < 12.1 */
+            animation: fadein 2.0s;
+}
+.fade-in-up { 
+ -webkit-animation: fadeinup 2.0s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadeinup 2.0s; /* Firefox < 16 */
+        -ms-animation: fadeinup 2.0s; /* Internet Explorer */
+         -o-animation: fadeinup 2.0s; /* Opera < 12.1 */
+            animation: fadeinup 2.0s;
+}
+
+
+@keyframes fadein {
+    from { transform: translateY(-10px);}
+    to   { transform: translateY(0px);}
+}
+
+@-moz-keyframes fadein {
+    from { transform: translateY(-10px);}
+    to   { transform: translateY(0px);}
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { transform: translateY(-10px);}
+    to   { transform: translateY(0px);}
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { transform: translateY(-10px);}
+    to   { transform: translateY(0px);}
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { transform: translateY(-10px);}
+    to   { transform: translateY(0px);}
+}
+
+@keyframes fadeinup {
+    from { transform: translateY(+10px);}
+    to   { transform: translateY(0px);}
+}
+
+@-moz-keyframes fadeinup {
+    from { transform: translateY(+10px);}
+    to   { transform: translateY(0px);}
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadeinup {
+    from { transform: translateY(+10px);}
+    to   { transform: translateY(0px);}
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadeinup {
+    from { transform: translateY(+10px);}
+    to   { transform: translateY(0px);}
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadeinup {
+    from { transform: translateY(+10px);}
+    to   { transform: translateY(0px);}
+}
+
+@keyframes bouncing {
+    0% {bottom: 0;}
+    50% {bottom: 20px;}
+    100% {bottom: 0;}
+}
+
+/* Firefox < 16 */
+@-moz-keyframes bouncing {
+    0% {bottom: 0;}
+    50% {bottom: 20px;}
+    100% {bottom: 0;}
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes bouncing {
+    0% {bottom: 0;}
+    50% {bottom: 20px;}
+    100% {bottom: 0;}
+}
+
+/* Internet Explorer */
+@-ms-keyframesbouncing {
+    0% {bottom: 0;}
+    50% {bottom: 20px;}
+    100% {bottom: 0;}
+}
+
+/* Opera < 12.1 */
+@-o-keyframes bouncing {
+    0% {bottom: 0;}
+    50% {bottom: 20px;}
+    100% {bottom: 0;}
+}
